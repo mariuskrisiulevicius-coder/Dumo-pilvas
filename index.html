@@ -3196,7 +3196,7 @@ function openOrderModal(method) {
           <a href="https://m.me/dumopilvas" target="_blank" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#0084ff;color:white;text-decoration:none;border-radius:3px;font-weight:700;font-size:0.92rem;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''">
             <span style="font-size:1.4rem">📘</span> Siųsti per Facebook Messenger
           </a>
-          <a href="mailto:dumopilvas@gmail.com?subject=Užsakymas&body=${whatsappMsg}" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--ember);color:white;text-decoration:none;border-radius:3px;font-weight:700;font-size:0.92rem;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''">
+          <a href="mailto:mariuskrisiulevicius@gmail.com?subject=Užsakymas&body=${whatsappMsg}" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--ember);color:white;text-decoration:none;border-radius:3px;font-weight:700;font-size:0.92rem;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''">
             <span style="font-size:1.4rem">✉️</span> Siųsti per El. paštą
           </a>
         </div>
@@ -3370,7 +3370,7 @@ function submitOrder() {
     `Iš viso: ${total.toFixed(2)}€\n` +
     (order.notes ? `\nPastabos: ${order.notes}` : '')
   );
-  window.open(`mailto:dumopilvas@gmail.com?subject=Užsakymas %23${order.id} – ${name}&body=${emailBody}`,'_blank');
+  window.open(`mailto:mariuskrisiulevicius@gmail.com?subject=Užsakymas %23${order.id} – ${name}&body=${emailBody}`,'_blank');
 
   document.getElementById('orderModalContent').innerHTML = `
     <div class="order-success">
@@ -3503,8 +3503,7 @@ function updateSheetsUI() {
 }
 
 function openSheetsUrl() {
-  if (!sheetsUrl) { showToast('Pirmiausia įveskite Sheets URL', '⚠️'); return; }
-  window.open(sheetsUrl, '_blank');
+  window.open('https://docs.google.com/spreadsheets/d/1KasEF1hW1WceAw1QdalZ6NT3_4-YLxorPWaocD-AdNM/edit', '_blank');
 }
 
 async function syncFromSheets() {
@@ -3601,7 +3600,7 @@ function copyAppsScript() {
   const code = `// Dūmo Pilvas – Google Apps Script
 const SHEET_NAME = 'Prekės';
 const ORDERS_SHEET = 'Užsakymai';
-const OWNER_EMAIL = 'dumopilvas@gmail.com'; // Čia gaunami visi užsakymai
+const OWNER_EMAIL = 'mariuskrisiulevicius@gmail.com'; // Čia gaunami visi užsakymai
 
 function setCORSHeaders(output) {
   return output
