@@ -5382,7 +5382,7 @@ function removeCoupon() {
 // ── Promo banner ──
 function closePromo() {
   var b = document.getElementById('promoBanner');
-  if (b) { b.style.opacity='0'; b.style.transform='translateX(20px)'; setTimeout(function(){ b.style.display='none'; }, 500); }
+  if (b) { b.style.display='none'; }
   sessionStorage.setItem('promoClosed','1');
 }
 function copyPromoCode() {
@@ -5404,7 +5404,8 @@ window.addEventListener('scroll', function() {
   }
 }, { once: true });
 function closePromoBanner() {
-  closePromo();
+  var b = document.getElementById('promoBanner');
+  if (b) b.style.display='none';
 }
 function copyPromoCode_old() { {
   navigator.clipboard.writeText('PIRMAS15').then(function(){
