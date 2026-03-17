@@ -5383,7 +5383,7 @@ function copyPromoCode() {
 }
 
 // ── Sheets URL ──
-var sheetsUrl = localStorage.getItem('dp_sheets_url')||'';
+// sheetsUrl declared above
 function syncOrderToSheets(order){if(!sheetsUrl)return;try{fetch(sheetsUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'addOrder',order})});}catch(e){console.warn(e);}}
 </script>
 
@@ -5425,7 +5425,7 @@ function searchShop(val) {
     return;
   }
   grid.innerHTML = filtered.map(function(p) {
-    return '<div class="product-card reveal visible" onclick="openProductModal(' + p.id + ')" style="cursor:pointer"><div class="product-img-wrap"><img src="' + p.img + '" alt="' + p.name + '" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80'"></div><div class="product-body"><div class="product-cat">' + (p.cat==='cold'?'❄️ Šaltam':'p.cat'==='hot'?'🔥 Karštam':'🛠️ Įrankiai') + '</div><div class="product-name">' + p.name + '</div><div class="product-price"><span class="price-current" style="font-family:Space Mono,monospace">' + p.price.toFixed(2).replace('.',',') + ' €</span></div></div></div>';
+    return '<div class="product-card reveal visible" onclick="openProductModal(' + p.id + ')" style="cursor:pointer"><div class="product-img-wrap"><img src="' + p.img + '" alt="' + p.name + '" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80'"></div><div class="product-body"><div class="product-cat">' + (p.cat==='cold'?'❄️ Šaltam':p.cat==='hot'?'🔥 Karštam':'🛠️ Įrankiai') + '</div><div class="product-name">' + p.name + '</div><div class="product-price"><span class="price-current" style="font-family:Space Mono,monospace">' + p.price.toFixed(2).replace('.',',') + ' €</span></div></div></div>';
   }).join('');
 }
 function clearShopSearch() {
