@@ -3373,24 +3373,14 @@ function submitOrder() {
   // Sync to Google Sheets if configured
   if (sheetsUrl) syncOrderToSheets(order);
 
-  // Send email via mailto (opens email client)
-  const itemLines = order.items.map(i=>`  • ${i.name} × ${i.qty} = ${(i.price*i.qty).toFixed(2)}€`).join('\n');
-  const emailBody = encodeURIComponent(
-    `NAUJAS UŽSAKYMAS #${order.id}\n` +
-    `━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-    `Data: ${order.date}\n` +
-    `Vardas: ${name}\n` +
-    `Tel.: ${tel}\n` +
-    `El. paštas: ${email}\n\n` +
-    `PRISTATYMAS\n` +
-    `Būdas: ${methodLabel}\n` +
-    `Adresas: ${address}\n` +
-    `Pristatymo kaina: ${deliveryCost}\n\n` +
-    `PREKĖS\n${itemLines}\n\n` +
-    `Iš viso: ${total.toFixed(2)}€\n` +
-    (order.notes ? `\nPastabos: ${order.notes}` : '')
-  );
-  window.open(`mailto:mariuskrisiulevicius@gmail.com?subject=Užsakymas %23${order.id} – ${name}&body=${emailBody}`,'_blank');
+  // Send via Apps Script (automatic emails to owner and client)
+  if (sheetsUrl) {
+    fetch(sheetsUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'addOrder', order: order })
+    }).catch(function(e) { console.warn('Sheets sync failed:', e); });
+  }
 
   document.getElementById('orderModalContent').innerHTML = `
     <div class="order-success">
