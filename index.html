@@ -1928,13 +1928,13 @@ nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
   background: #0e0404;
   border-top: 2px solid rgba(204,34,51,0.4);
   padding: 16px 32px;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
 }
-#cookieBanner.show { display: flex; }
+#cookieBanner.hidden { display: none !important; }
 .cookie-text {
   font-size: 0.84rem;
   color: rgba(240,232,234,0.75);
@@ -5529,20 +5529,20 @@ function closeCompareModal() {
 <script>
 // ══ COOKIE BANNER ══
 document.addEventListener('DOMContentLoaded', function() {
-  if (!localStorage.getItem('dp_cookie_consent')) {
+  if (localStorage.getItem('dp_cookie_consent')) {
     var b = document.getElementById('cookieBanner');
-    if (b) b.classList.add('show');
+    if (b) b.classList.add('hidden');
   }
 });
 function cookieAccept() {
   localStorage.setItem('dp_cookie_consent', 'accepted');
   var b = document.getElementById('cookieBanner');
-  if (b) b.classList.remove('show');
+  if (b) b.classList.add('hidden');
 }
 function cookieDecline() {
   localStorage.setItem('dp_cookie_consent', 'essential');
   var b = document.getElementById('cookieBanner');
-  if (b) b.classList.remove('show');
+  if (b) b.classList.add('hidden');
 }
 </script>
 </body>
