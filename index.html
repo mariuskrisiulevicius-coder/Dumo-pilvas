@@ -1752,6 +1752,7 @@ nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 102;
+  transition: transform 0.3s ease;
 }
 #announcementBar.hidden { display: none; }
 #announcementBar span { opacity: 0.85; margin: 0 16px; }
@@ -4328,17 +4329,21 @@ let lastScrollY = 0;
 let navHidden = false;
 window.addEventListener('scroll', () => {
   const currentY = window.scrollY;
+  const ann = document.getElementById('announcementBar');
   navbar.classList.toggle('scrolled', currentY > 60);
   if (currentY > 120) {
     if (currentY > lastScrollY + 8 && !navHidden) {
       navbar.style.transform = 'translateY(-100%)';
+      if (ann && !ann.classList.contains('hidden')) ann.style.transform = 'translateY(-100%)';
       navHidden = true;
     } else if (currentY < lastScrollY - 4 && navHidden) {
       navbar.style.transform = 'translateY(0)';
+      if (ann && !ann.classList.contains('hidden')) ann.style.transform = 'translateY(0)';
       navHidden = false;
     }
   } else {
     navbar.style.transform = 'translateY(0)';
+    if (ann && !ann.classList.contains('hidden')) ann.style.transform = 'translateY(0)';
     navHidden = false;
   }
   lastScrollY = currentY;
@@ -5310,7 +5315,7 @@ function closeModalOutside(e) {
 
 
 <!-- PROMO BANNER -->
-<div id="promoBanner" style="position:fixed;bottom:28px;left:28px;z-index:500;max-width:300px;background:#1a0808;border:1px solid rgba(204,34,51,0.5);border-left:4px solid #cc2233;border-radius:6px;padding:16px 20px 14px;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+<div id="promoBanner" style="position:fixed;bottom:28px;right:28px;z-index:500;max-width:260px;background:#1a0808;border:1px solid rgba(204,34,51,0.5);border-left:4px solid #cc2233;border-radius:6px;padding:16px 20px 14px;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
   <button class="promo-close" onclick="closePromoBanner()">✕</button>
   <div class="promo-tag">Specialus pasiūlymas</div>
   <div class="promo-text">Pirmam užsakymui – <strong style="color:#f0e8ea;">15% nuolaida</strong>!<br>Nepraleisk progos 🔥</div>
@@ -5522,11 +5527,11 @@ function closeCompareModal() {
 
 
 <!-- COOKIE BANNER -->
-<div style="position:fixed;top:0;left:0;right:0;background:#0e0404;border-bottom:3px solid #cc2233;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;z-index:99999;" id="ckBanner">
-  <span style="color:rgba(240,232,234,0.85);font-size:0.84rem;flex:1;">🍪 Ši svetainė naudoja būtinus slapukus. Jūsų duomenys naudojami tik užsakymui įvykdyti. <a href="privacy.html" target="_blank" style="color:#cc2233;">Privatumo politika</a></span>
+<div style="position:fixed;bottom:0;left:0;right:0;background:#0e0404;border-top:2px solid #cc2233;padding:10px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;z-index:99999;" id="ckBanner">
+  <span style="color:rgba(240,232,234,0.85);font-size:0.78rem;flex:1;">🍪 Ši svetainė naudoja būtinus slapukus. Jūsų duomenys naudojami tik užsakymui įvykdyti. <a href="privacy.html" target="_blank" style="color:#cc2233;">Privatumo politika</a></span>
   <div style="display:flex;gap:10px;flex-shrink:0;">
-    <button onclick="document.getElementById('ckBanner').style.display='none'" style="padding:10px 18px;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(240,232,234,0.6);border-radius:4px;font-family:inherit;font-size:0.82rem;cursor:pointer;">Tik būtini</button>
-    <button onclick="document.getElementById('ckBanner').style.display='none'" style="padding:10px 22px;background:#cc2233;color:white;border:none;border-radius:4px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;">✓ Sutinku</button>
+    <button onclick="document.getElementById('ckBanner').style.display='none'" style="padding:7px 14px;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(240,232,234,0.6);border-radius:4px;font-family:inherit;font-size:0.76rem;cursor:pointer;">Tik būtini</button>
+    <button onclick="document.getElementById('ckBanner').style.display='none'" style="padding:7px 16px;background:#cc2233;color:white;border:none;border-radius:4px;font-family:inherit;font-size:0.76rem;font-weight:700;cursor:pointer;">✓ Sutinku</button>
   </div>
 </div>
 
