@@ -1924,9 +1924,9 @@ nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
 #cookieBanner {
   position: fixed;
   bottom: 0; left: 0; right: 0;
-  z-index: 9999;
+  z-index: 99999;
   background: #0e0404;
-  border-top: 2px solid rgba(204,34,51,0.4);
+  border-top: 3px solid #cc2233;
   padding: 16px 32px;
   display: flex;
   align-items: center;
@@ -1934,7 +1934,6 @@ nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
   gap: 24px;
   flex-wrap: wrap;
 }
-#cookieBanner.hidden { display: none !important; }
 .cookie-text {
   font-size: 0.84rem;
   color: rgba(240,232,234,0.75);
@@ -1964,11 +1963,7 @@ nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
   cursor: pointer;
 }
 .cookie-decline:hover { border-color: rgba(255,255,255,0.4); color: rgba(240,232,234,0.8); }
-@media (max-width: 600px) {
-  #cookieBanner { padding: 14px 20px; }
-  .cookie-btns { width: 100%; }
-  .cookie-accept, .cookie-decline { flex: 1; text-align: center; }
-}
+
 
 </style>
 </head>
@@ -5527,23 +5522,11 @@ function closeCompareModal() {
 </div>
 
 <script>
-// ══ COOKIE BANNER ══
-// Run immediately - no DOMContentLoaded needed since script is at end of body
-(function() {
-  if (localStorage.getItem('dp_cookie_v2')) {
-    var b = document.getElementById('cookieBanner');
-    if (b) b.classList.add('hidden');
-  }
-})();
 function cookieAccept() {
-  localStorage.setItem('dp_cookie_v2', '1');
-  var b = document.getElementById('cookieBanner');
-  if (b) b.classList.add('hidden');
+  document.getElementById('cookieBanner').style.display = 'none';
 }
 function cookieDecline() {
-  localStorage.setItem('dp_cookie_v2', '1');
-  var b = document.getElementById('cookieBanner');
-  if (b) b.classList.add('hidden');
+  document.getElementById('cookieBanner').style.display = 'none';
 }
 </script>
 </body>
