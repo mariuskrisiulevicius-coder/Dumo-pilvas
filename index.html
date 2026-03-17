@@ -3377,7 +3377,8 @@ function submitOrder() {
   if (sheetsUrl) {
     fetch(sheetsUrl, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ action: 'addOrder', order: order })
     }).catch(function(e) { console.warn('Sheets sync failed:', e); });
   }
