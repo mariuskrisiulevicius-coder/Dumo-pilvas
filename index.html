@@ -5382,7 +5382,8 @@ function removeCoupon() {
 // ── Promo banner ──
 function closePromo() {
   var b = document.getElementById('promoBanner');
-  if (b) { b.style.display='none'; }
+  if (b) b.style.display = 'none';
+}
   sessionStorage.setItem('promoClosed','1');
 }
 function copyPromoCode() {
