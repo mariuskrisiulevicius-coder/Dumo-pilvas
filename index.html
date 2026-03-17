@@ -1924,19 +1924,17 @@ nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
 #cookieBanner {
   position: fixed;
   bottom: 0; left: 0; right: 0;
-  z-index: 999;
+  z-index: 9999;
   background: #0e0404;
   border-top: 2px solid rgba(204,34,51,0.4);
   padding: 16px 32px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
-  transform: translateY(100%);
-  transition: transform 0.4s ease;
 }
-#cookieBanner.show { transform: translateY(0); }
+#cookieBanner.show { display: flex; }
 .cookie-text {
   font-size: 0.84rem;
   color: rgba(240,232,234,0.75);
@@ -5520,7 +5518,7 @@ function closeCompareModal() {
 <div id="cookieBanner">
   <div class="cookie-text">
     🍪 Ši svetainė naudoja būtinus slapukus tinkamam veikimui užtikrinti. Jūsų užsakymo duomenys (vardas, tel. nr., el. paštas) naudojami <strong>tik užsakymui įvykdyti</strong> ir nėra perduodami trečiosioms šalims.
-    <a href="privacy.html" target="_blank">Privatumo politika</a>
+    <a href="privacy.html" target="_blank" style="color:#cc2233;text-decoration:underline;">Privatumo politika</a>
   </div>
   <div class="cookie-btns">
     <button class="cookie-decline" onclick="cookieDecline()">Tik būtini</button>
