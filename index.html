@@ -5528,21 +5528,21 @@ function closeCompareModal() {
 
 <script>
 // ══ COOKIE BANNER ══
-(function() {
+document.addEventListener('DOMContentLoaded', function() {
   if (!localStorage.getItem('dp_cookie_consent')) {
     var b = document.getElementById('cookieBanner');
     if (b) b.classList.add('show');
   }
-})();
+});
 function cookieAccept() {
   localStorage.setItem('dp_cookie_consent', 'accepted');
   var b = document.getElementById('cookieBanner');
-  if (b) { b.style.transform = 'translateY(100%)'; setTimeout(function(){ b.style.display='none'; }, 400); }
+  if (b) b.classList.remove('show');
 }
 function cookieDecline() {
   localStorage.setItem('dp_cookie_consent', 'essential');
   var b = document.getElementById('cookieBanner');
-  if (b) { b.style.transform = 'translateY(100%)'; setTimeout(function(){ b.style.display='none'; }, 400); }
+  if (b) b.classList.remove('show');
 }
 </script>
 </body>
