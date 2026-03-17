@@ -5528,19 +5528,20 @@ function closeCompareModal() {
 
 <script>
 // ══ COOKIE BANNER ══
-document.addEventListener('DOMContentLoaded', function() {
-  if (localStorage.getItem('dp_cookie_consent')) {
+// Run immediately - no DOMContentLoaded needed since script is at end of body
+(function() {
+  if (localStorage.getItem('dp_cookie_v2')) {
     var b = document.getElementById('cookieBanner');
     if (b) b.classList.add('hidden');
   }
-});
+})();
 function cookieAccept() {
-  localStorage.setItem('dp_cookie_consent', 'accepted');
+  localStorage.setItem('dp_cookie_v2', '1');
   var b = document.getElementById('cookieBanner');
   if (b) b.classList.add('hidden');
 }
 function cookieDecline() {
-  localStorage.setItem('dp_cookie_consent', 'essential');
+  localStorage.setItem('dp_cookie_v2', '1');
   var b = document.getElementById('cookieBanner');
   if (b) b.classList.add('hidden');
 }
