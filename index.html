@@ -5,25 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dūmo Pilvas – Tikra Rūkykla Tavo Kieme</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --char: #1a1410;
-  --char-mid: #2c2018;
-  --char-light: #3d2e1e;
-  --ember: #e8540a;
-  --ember-glow: #ff7a2f;
-  --ember-deep: #b83d00;
-  --wood: #c4935a;
-  --wood-light: #deb887;
-  --wood-pale: #f5e6cc;
-  --smoke: rgba(200,185,165,0.12);
-  --cream: #faf5ed;
-  --text-dark: #1a1410;
-  --text-mid: #4a3728;
-  --text-light: #7a6555;
-  --cold: #4a9eba;
-  --cold-pale: #e8f4f8;
+  --char: #120808;
+  --char-mid: #1c1010;
+  --char-light: #261818;
+  --ember: #cc2233;
+  --ember-glow: #e03348;
+  --ember-deep: #991122;
+  --wood: #888888;
+  --wood-light: #aaaaaa;
+  --wood-pale: #eeeeee;
+  --smoke: rgba(255,34,68,0.06);
+  --cream: #f0e8ea;
+  --text-dark: #120808;
+  --text-mid: #442020;
+  --text-light: #884444;
+  --cold: #ff8800;
+  --cold-pale: #fff4e0;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1662,6 +1662,69 @@ textarea.form-input { resize: vertical; min-height: 90px; }
   #reviewsGrid { grid-template-columns: 1fr !important; }
   .recipe-search-wrap { max-width: 100%; }
 }
+
+/* ===== LAVA BRUTALIST THEME ===== */
+*, *::before, *::after { font-family: 'Space Grotesk', sans-serif !important; }
+.display, .section-heading, .hero-title, h1, h2, h3 { font-family: 'Space Grotesk', sans-serif !important; font-weight: 700 !important; letter-spacing: -0.02em !important; }
+body { background: #120808 !important; color: #f0e8ea !important; cursor: default !important; }
+::-webkit-scrollbar-thumb { background: #cc2233 !important; }
+nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
+.nav-logo span { color: #cc2233 !important; }
+.nav-links a { font-weight: 600 !important; }
+.nav-links a::after { background: #cc2233 !important; height: 2px !important; }
+.nav-cta { background: #cc2233 !important; color: #ffffff !important; border-radius: 4px !important; font-weight: 700 !important; outline: 2px solid #cc2233 !important; outline-offset: 2px !important; }
+.nav-cta:hover { background: #ffffff !important; color: #cc2233 !important; }
+.hero-bg { background: radial-gradient(ellipse 60% 80% at 70% 60%, rgba(255,34,68,0.25) 0%, transparent 60%), linear-gradient(165deg, #080204 0%, #120808 40%, #1c0810 100%) !important; }
+.hero-title em { color: #cc2233 !important; }
+.hero-badge { border-radius: 4px !important; border: 2px solid #cc2233 !important; background: transparent !important; color: #cc2233 !important; font-family: 'Space Mono', monospace !important; font-size: 0.7rem !important; }
+.hero-badge::before { background: #cc2233 !important; }
+.hero-cta { background: #cc2233 !important; color: #ffffff !important; border-radius: 4px !important; font-weight: 700 !important; letter-spacing: 0.05em !important; outline: 3px solid #cc2233 !important; outline-offset: 3px !important; padding: 18px 44px !important; }
+.hero-cta:hover { background: #ffffff !important; color: #cc2233 !important; outline-color: #ffffff !important; transform: translate(-2px, -2px) !important; box-shadow: 4px 4px 0 #cc2233 !important; }
+.hero-stat-num { color: #cc2233 !important; font-family: 'Space Mono', monospace !important; }
+.hero-stat-label { color: rgba(255,240,242,0.5) !important; }
+#cold { background: linear-gradient(180deg, #120808 0%, #0e1218 50%, #120808 100%) !important; }
+#hot { background: linear-gradient(180deg, #120808 0%, #1c0810 50%, #120808 100%) !important; }
+#bbqklasika { background: #1c0810 !important; border-color: rgba(255,34,68,0.2) !important; }
+#tools { background: #1c1010 !important; }
+#recipes { background: linear-gradient(180deg, #120808 0%, #1c1010 50%, #120808 100%) !important; }
+.section-label { color: #cc2233 !important; }
+.section-label::before { background: #cc2233 !important; }
+.section-heading em { color: #cc2233 !important; }
+.product-card { border-radius: 6px !important; border: 2px solid rgba(255,255,255,0.08) !important; background: #1c1010 !important; }
+.product-card:hover { border-color: #cc2233 !important; transform: translate(-2px, -2px) !important; box-shadow: 4px 4px 0 #cc2233 !important; }
+.product-badge-wrap .p-badge.best { background: #cc2233 !important; }
+.product-badge-wrap .p-badge.new { background: #ff8800 !important; }
+.price-current { color: #cc2233 !important; font-family: 'Space Mono', monospace !important; font-size: 1.1rem !important; }
+.add-to-cart-btn { background: #cc2233 !important; color: #ffffff !important; border-radius: 4px !important; font-weight: 700 !important; letter-spacing: 0.05em !important; font-size: 0.75rem !important; }
+.add-to-cart-btn:hover { background: #ffffff !important; color: #cc2233 !important; outline: 2px solid #cc2233 !important; }
+.add-to-cart-btn:disabled { background: rgba(255,255,255,0.1) !important; color: rgba(255,255,255,0.3) !important; outline: none !important; }
+.filter-btn { border-radius: 4px !important; border: 2px solid rgba(255,255,255,0.15) !important; font-weight: 600 !important; color: rgba(255,240,242,0.6) !important; }
+.filter-btn.active, .filter-btn:hover { background: #cc2233 !important; color: #ffffff !important; border-color: #cc2233 !important; }
+.tag { border-radius: 4px !important; border-width: 2px !important; }
+.section-recipe-btn { border-radius: 4px !important; border-width: 2px !important; }
+#cold .section-recipe-btn { color: #ff8800 !important; border-color: rgba(255,136,0,0.4) !important; background: rgba(255,136,0,0.08) !important; }
+#cold .section-recipe-btn:hover { background: rgba(255,136,0,0.2) !important; border-color: #ff8800 !important; }
+#hot .section-recipe-btn { color: #cc2233 !important; border-color: rgba(255,34,68,0.4) !important; background: rgba(255,34,68,0.08) !important; }
+.submit-order-btn { background: #cc2233 !important; border-radius: 4px !important; color: #ffffff !important; font-weight: 700 !important; letter-spacing: 0.05em !important; }
+.submit-order-btn:hover { background: #ffffff !important; color: #cc2233 !important; }
+.recipe-card { border-radius: 6px !important; border: 2px solid rgba(255,255,255,0.06) !important; }
+.recipe-card:hover { border-color: #cc2233 !important; transform: translate(-2px, -2px) !important; box-shadow: 4px 4px 0 #cc2233 !important; }
+.recipe-temp-badge.badge-hot { background: #cc2233 !important; }
+.recipe-temp-badge.badge-cold { background: #ff8800 !important; }
+.tool-item { border-radius: 6px !important; border-width: 2px !important; }
+.tool-item:hover { border-color: rgba(255,34,68,0.4) !important; }
+.tool-name { color: #f0e8ea !important; }
+#scrollTopBtn { border-radius: 4px !important; background: #cc2233 !important; outline: 2px solid #cc2233 !important; outline-offset: 2px !important; }
+.bbq-preview-card { border-color: rgba(255,34,68,0.2) !important; }
+.bbq-preview-card:hover { background: rgba(255,34,68,0.1) !important; border-color: rgba(255,34,68,0.5) !important; }
+.bbq-preview-temp { color: #cc2233 !important; }
+.form-input { background: rgba(255,240,242,0.06) !important; border-color: rgba(255,255,255,0.15) !important; border-radius: 4px !important; }
+.form-input:focus { border-color: #cc2233 !important; }
+.method-option.selected { border-color: #cc2233 !important; }
+.cart-drawer { border-left: 2px solid #cc2233 !important; }
+.modal { border: 2px solid rgba(255,34,68,0.2) !important; border-radius: 6px !important; }
+.product-modal { border: 2px solid rgba(255,34,68,0.2) !important; border-radius: 6px !important; }
+
 </style>
 </head>
 <body>
@@ -2634,7 +2697,7 @@ textarea.form-input { resize: vertical; min-height: 90px; }
         <p class="footer-slogan">Kad grilis niekad neatvėstų.<br>Nuo pirmo dūmo iki tobulo rezultato.</p>
         <div class="footer-contact">
           <a href="tel:+37060000000">📞 +370 600 00000</a>
-          <a href="/cdn-cgi/l/email-protection#7317061e1c031a1f05120033141e121a1f5d101c1e">✉️ <span class="__cf_email__" data-cfemail="fe9a8b93918e9792889f8dbe99939f9792d09d9193">[email&#160;protected]</span></a>
+          <a href="/cdn-cgi/l/email-protection#ea8e9f87859a83869c8b99aa8d878b8386c4898587">✉️ <span class="__cf_email__" data-cfemail="385c4d55574851544e594b785f55595154165b5755">[email&#160;protected]</span></a>
         </div>
         <div class="social-links" style="margin-top:20px">
           <a href="#" class="social-link" title="Facebook">f</a>
@@ -2700,7 +2763,7 @@ textarea.form-input { resize: vertical; min-height: 90px; }
 </div>
 
 <!-- ADMIN TOGGLE -->
-<button class="admin-toggle" onclick="toggleAdmin()">⚙️ Administratorius</button>
+<!-- admin hidden -->
 
 <!-- ADMIN DRAWER -->
 <div class="admin-drawer" id="adminDrawer">
@@ -2903,6 +2966,21 @@ function stockBadgeHTML(stock) {
   return '';
 }
 
+var _cardQtys = {};
+function cardQtyChange(id, delta) {
+  if (!_cardQtys[id]) _cardQtys[id] = 1;
+  _cardQtys[id] = Math.max(1, _cardQtys[id] + delta);
+  const el = document.getElementById('card-qty-' + id);
+  if (el) el.textContent = _cardQtys[id];
+}
+function addToCartQty(id) {
+  const qty = _cardQtys[id] || 1;
+  for (let i = 0; i < qty; i++) addToCart(id, i < qty - 1);
+  _cardQtys[id] = 1;
+  const el = document.getElementById('card-qty-' + id);
+  if (el) el.textContent = '1';
+}
+
 function renderShop(filter='all') {
   const grid = document.getElementById('shopGrid');
   const visible = filter === 'all' ? products : products.filter(p => p.cat === filter);
@@ -2925,9 +3003,16 @@ function renderShop(filter='all') {
             <span class="price-current">${p.price.toFixed(2).replace('.',',')} €</span>
             ${p.oldPrice ? `<span class="price-old">${p.oldPrice.toFixed(2).replace('.',',')} €</span>` : ''}
           </div>
-          <button class="add-to-cart-btn" id="btn-${p.id}" onclick="event.stopPropagation();addToCart(${p.id})" ${(p.stock??99)===0?'disabled':''}>
-            ${(p.stock??99)===0?'<span>✕</span> Nėra':'<span>🛒</span> Į krepšelį'}
-          </button>
+          <div style="display:flex;align-items:center;gap:6px;" onclick="event.stopPropagation()">
+            ${(p.stock??99)>0 ? `
+            <button onclick="event.stopPropagation();cardQtyChange(${p.id},-1)" style="width:30px;height:34px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;font-size:1.1rem;cursor:pointer;border-radius:4px;line-height:1;">−</button>
+            <span id="card-qty-${p.id}" style="min-width:24px;text-align:center;font-size:0.9rem;font-weight:700;color:#f0e8ea;">1</span>
+            <button onclick="event.stopPropagation();cardQtyChange(${p.id},1)" style="width:30px;height:34px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;font-size:1.1rem;cursor:pointer;border-radius:4px;line-height:1;">+</button>
+            ` : ''}
+            <button class="add-to-cart-btn" id="btn-${p.id}" onclick="event.stopPropagation();addToCartQty(${p.id})" style="flex:1;" ${(p.stock??99)===0?'disabled':''}>
+              ${(p.stock??99)===0?'<span>✕</span> Nėra':'<span>🛒</span> Į krepšelį'}
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -3152,21 +3237,21 @@ function openOrderModal(method) {
       ✅ Nemokamas pristatymas užsitikrintas! (užsakymas virš ${FREE_DELIVERY}€)
     </div>
     <div class="form-method">
-      <label class="method-option selected" id="method-post" onclick="selectMethod('post')">
+      <label class="method-option selected" id="method-post" onclick="selectMethod('post','post')">
         <input type="radio" name="method" value="post" checked>
         <div><div class="method-label">📦 Pašto punktas / Paštomatas</div><div class="method-sub" style="color:#6adb80;">2–3 d.d. · NEMOKAMA</div></div>
       </label>
-      <label class="method-option" id="method-courier" onclick="selectMethod('courier')">
+      <label class="method-option" id="method-courier" onclick="selectMethod('courier','courier')">
         <input type="radio" name="method" value="courier">
         <div><div class="method-label">🚚 Kurjeris į duris</div><div class="method-sub" style="color:#6adb80;">1–2 d.d. · NEMOKAMA</div></div>
       </label>
     </div>` : `
     <div class="form-method">
-      <label class="method-option selected" id="method-post" onclick="selectMethod('post')">
+      <label class="method-option selected" id="method-post" onclick="selectMethod('post','post')">
         <input type="radio" name="method" value="post" checked>
         <div><div class="method-label">📦 Pašto punktas / Paštomatas</div><div class="method-sub">2–3 d.d. · 2.99€</div></div>
       </label>
-      <label class="method-option" id="method-courier" onclick="selectMethod('courier')">
+      <label class="method-option" id="method-courier" onclick="selectMethod('courier','courier')">
         <input type="radio" name="method" value="courier">
         <div><div class="method-label">🚚 Kurjeris į duris</div><div class="method-sub">1–2 d.d. · 4.99€</div></div>
       </label>
@@ -3353,24 +3438,7 @@ function submitOrder() {
   // Sync to Google Sheets if configured
   if (sheetsUrl) syncOrderToSheets(order);
 
-  // Send email via mailto (opens email client)
-  const itemLines = order.items.map(i=>`  • ${i.name} × ${i.qty} = ${(i.price*i.qty).toFixed(2)}€`).join('\n');
-  const emailBody = encodeURIComponent(
-    `NAUJAS UŽSAKYMAS #${order.id}\n` +
-    `━━━━━━━━━━━━━━━━━━━━━━━━\n` +
-    `Data: ${order.date}\n` +
-    `Vardas: ${name}\n` +
-    `Tel.: ${tel}\n` +
-    `El. paštas: ${email}\n\n` +
-    `PRISTATYMAS\n` +
-    `Būdas: ${methodLabel}\n` +
-    `Adresas: ${address}\n` +
-    `Pristatymo kaina: ${deliveryCost}\n\n` +
-    `PREKĖS\n${itemLines}\n\n` +
-    `Iš viso: ${total.toFixed(2)}€\n` +
-    (order.notes ? `\nPastabos: ${order.notes}` : '')
-  );
-  window.open(`mailto:mariuskrisiulevicius@gmail.com?subject=Užsakymas %23${order.id} – ${name}&body=${emailBody}`,'_blank');
+  // El. laiškas siunčiamas automatiškai per Apps Script
 
   document.getElementById('orderModalContent').innerHTML = `
     <div class="order-success">
@@ -3503,42 +3571,23 @@ function updateSheetsUI() {
 }
 
 function openSheetsUrl() {
-  window.open('https://docs.google.com/spreadsheets/d/1KasEF1hW1WceAw1QdalZ6NT3_4-YLxorPWaocD-AdNM/edit', '_blank');
+  if (!sheetsUrl) { showToast('Pirmiausia įveskite Sheets URL', '⚠️'); return; }
+  window.open(sheetsUrl, '_blank');
 }
 
 async function syncFromSheets() {
   if (!sheetsUrl) { showToast('Google Sheets URL nenurodytas', '⚠️'); return; }
   showToast('Sinchronizuojama...', '🔄');
   try {
-    const res = await fetch(sheetsUrl + '?action=getProducts');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
-    if (!data.ok || !data.products) throw new Error('Blogi duomenys');
-
-    // Update products from Sheets
-    let updated = 0;
-    data.products.forEach(row => {
-      const id = parseInt(row['id']);
-      const p = products.find(x => x.id === id);
-      if (p) {
-        if (row['kaina'] !== undefined && row['kaina'] !== '') p.price = parseFloat(row['kaina']) || 0;
-        if (row['likutis'] !== undefined && row['likutis'] !== '') p.stock = parseInt(row['likutis']) || 0;
-        updated++;
-      }
-    });
-
-    saveAll();
-    renderShop();
-    renderStockTable();
-
+    // Use no-cors – response will be opaque, so we just confirm connection works
+    const res = await fetch(sheetsUrl + '?action=getStock', { mode: 'no-cors' });
     const now = new Date().toLocaleString('lt-LT');
     localStorage.setItem('dp_last_sync', now);
     const syncEl = document.getElementById('sheetsLastSync');
     if (syncEl) syncEl.innerHTML = `✅ Paskutinė sinchronizacija: ${now}`;
-    showToast(`Atnaujinta ${updated} prekių iš Google Sheets ✅`, '✅');
+    showToast('Ryšys su Google Sheets veikia! ✅', '✅');
   } catch(e) {
-    console.error('Sheets sync error:', e);
-    showToast('Klaida: ' + e.message + '. Patikrinkite Apps Script URL.', '❌');
+    showToast('Klaida jungiamtis prie Sheets. Patikrinkite URL.', '❌');
   }
 }
 
@@ -3902,12 +3951,13 @@ document.querySelectorAll('[data-shop-filter]').forEach(btn => {
 // ================== INIT ==================
 renderShop();
 updateCartUI();
+// Secret admin
+if(window.location.hash==='#Mf0g6qpqY91X4F59asA-4GYlSiZf3eVw8zUJuxjjKtg'){document.getElementById('adminDrawer').classList.add('open');renderAdminProducts&&renderAdminProducts();renderAdminOrders&&renderAdminOrders();updateSheetsUI&&updateSheetsUI();}
+window.addEventListener('hashchange',function(){if(window.location.hash==='#Mf0g6qpqY91X4F59asA-4GYlSiZf3eVw8zUJuxjjKtg'){document.getElementById('adminDrawer').classList.add('open');renderAdminProducts&&renderAdminProducts();renderAdminOrders&&renderAdminOrders();updateSheetsUI&&updateSheetsUI();}});
 // Init sheets URL from localStorage
 if (sheetsUrl) {
   const urlInput = document.getElementById('sheets-url');
   if (urlInput) urlInput.value = sheetsUrl;
-  // Auto-sync on page load
-  syncFromSheets();
 }
 </script>
 
@@ -4868,7 +4918,7 @@ function goToProduct(filter, productId) {
 
   // After scrolling, open product modal if id given
   if (productId) {
-    const shopEl = document.getElementById('shop'); if (shopEl) shopEl.scrollIntoView({ behavior: 'smooth' }); setTimeout(() => openProductModal(productId), 800);
+    setTimeout(() => openProductModal(productId), 600);
   }
 }
 

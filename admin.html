@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dūmo Pilvas – Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --char: #1a1410;
+  --char-mid: #2c2018;
+  --ember: #e8540a;
+  --ember-glow: #ff7a2f;
+  --wood: #c4935a;
+  --wood-light: #deb887;
+  --cream: #faf5ed;
+  --text-mid: #4a3728;
+  --cold: #4a9eba;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--char); color: var(--cream); min-height: 100vh; }
+
+/* LOGIN */
+#loginScreen {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh;
+  background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(184,61,0,0.2) 0%, transparent 70%), var(--char);
+}
+.login-box {
+  background: rgba(250,245,237,0.04);
+  border: 1px solid rgba(250,245,237,0.1);
+  border-radius: 8px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+.login-logo { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 900; line-height: 1; margin-bottom: 8px; }
+.login-logo span { color: var(--ember); }
+.login-sub { font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,245,237,0.35); margin-bottom: 36px; }
+.login-input {
+  width: 100%; padding: 14px 18px; background: rgba(250,245,237,0.06);
+  border: 1px solid rgba(250,245,237,0.15); border-radius: 4px;
+  color: var(--cream); font-family: inherit; font-size: 1rem;
+  text-align: center; letter-spacing: 0.1em; margin-bottom: 16px;
+}
+.login-input:focus { outline: none; border-color: var(--ember); }
+.login-btn {
+  width: 100%; padding: 14px; background: var(--ember); color: white;
+  border: none; border-radius: 4px; font-family: inherit; font-size: 0.9rem;
+  font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.2s;
+}
+.login-btn:hover { background: var(--ember-glow); }
+.login-error { color: #f07070; font-size: 0.82rem; margin-top: 10px; min-height: 20px; }
+
+/* ADMIN PANEL */
+#adminPanel { display: none; }
+.admin-header {
+  background: rgba(26,20,16,0.98);
+  border-bottom: 1px solid rgba(232,84,10,0.25);
+  padding: 16px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  position: sticky; top: 0; z-index: 100;
+}
+.admin-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900; }
+.admin-logo span { color: var(--ember); }
+.admin-title { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(250,245,237,0.4); margin-top: 2px; }
+.logout-btn {
+  padding: 8px 18px; background: transparent; border: 1px solid rgba(250,245,237,0.2);
+  color: rgba(250,245,237,0.6); border-radius: 3px; font-family: inherit;
+  font-size: 0.8rem; cursor: pointer; transition: all 0.2s;
+}
+.logout-btn:hover { border-color: var(--ember); color: var(--ember); }
+
+.admin-nav {
+  background: var(--char-mid);
+  border-bottom: 1px solid rgba(250,245,237,0.08);
+  display: flex; gap: 0; overflow-x: auto;
+}
+.admin-nav-btn {
+  padding: 16px 28px; background: none; border: none; border-bottom: 2px solid transparent;
+  color: rgba(250,245,237,0.5); font-family: inherit; font-size: 0.85rem;
+  font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.2s;
+}
+.admin-nav-btn:hover { color: var(--cream); }
+.admin-nav-btn.active { color: var(--ember); border-bottom-color: var(--ember); }
+
+.admin-content { max-width: 1200px; margin: 0 auto; padding: 36px 32px; }
+
+/* STATS */
+.stats-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-bottom: 36px;
+}
+.stat-card {
+  background: rgba(250,245,237,0.04); border: 1px solid rgba(250,245,237,0.08);
+  border-radius: 6px; padding: 24px 20px;
+}
+.stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--ember); }
+.stat-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,245,237,0.4); margin-top: 4px; }
+
+/* SECTION */
+.section-title {
+  font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 900;
+  margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 1px solid rgba(250,245,237,0.08);
+}
+.section-title span { color: var(--ember); }
+
+/* FORMS */
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+.form-full { grid-column: 1 / -1; }
+.form-label { display: block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(250,245,237,0.5); margin-bottom: 6px; }
+.form-input {
+  width: 100%; padding: 10px 14px; background: rgba(250,245,237,0.06);
+  border: 1px solid rgba(250,245,237,0.12); border-radius: 3px;
+  color: var(--cream); font-family: inherit; font-size: 0.88rem;
+}
+.form-input:focus { outline: none; border-color: var(--ember); }
+select.form-input { cursor: pointer; }
+
+/* BUTTONS */
+.btn { padding: 10px 22px; border-radius: 3px; font-family: inherit; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; border: 1.5px solid; }
+.btn-primary { background: var(--ember); border-color: var(--ember); color: white; }
+.btn-primary:hover { background: var(--ember-glow); border-color: var(--ember-glow); }
+.btn-secondary { background: transparent; border-color: rgba(250,245,237,0.2); color: rgba(250,245,237,0.7); }
+.btn-secondary:hover { border-color: var(--ember); color: var(--ember); }
+.btn-danger { background: transparent; border-color: rgba(220,60,60,0.4); color: #f07070; }
+.btn-danger:hover { background: rgba(220,60,60,0.12); }
+.btn-sm { padding: 6px 14px; font-size: 0.75rem; }
+
+/* IMG UPLOAD */
+.img-upload-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.img-slot { position: relative; }
+.img-slot-label { display: block; padding: 10px; background: rgba(250,245,237,0.04); border: 1px dashed rgba(250,245,237,0.2); border-radius: 3px; text-align: center; cursor: pointer; font-size: 0.75rem; color: rgba(250,245,237,0.5); transition: all 0.2s; }
+.img-slot-label:hover { border-color: var(--ember); color: var(--ember); }
+.img-preview { width: 100%; height: 80px; object-fit: cover; border-radius: 3px; margin-top: 6px; display: none; }
+
+/* PRODUCTS TABLE */
+.products-list { display: flex; flex-direction: column; gap: 10px; }
+.product-row {
+  display: flex; align-items: center; gap: 16px;
+  background: rgba(250,245,237,0.03); border: 1px solid rgba(250,245,237,0.07);
+  border-radius: 6px; padding: 14px 16px;
+}
+.product-row img { width: 56px; height: 56px; object-fit: cover; border-radius: 4px; flex-shrink: 0; background: rgba(250,245,237,0.05); }
+.product-row-info { flex: 1; min-width: 0; }
+.product-row-name { font-weight: 600; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.product-row-meta { font-size: 0.75rem; color: rgba(250,245,237,0.4); margin-top: 3px; }
+.product-row-price { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 900; color: var(--ember); flex-shrink: 0; }
+.product-row-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+/* ORDERS TABLE */
+.orders-table { width: 100%; border-collapse: collapse; }
+.orders-table th { text-align: left; padding: 10px 14px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(250,245,237,0.35); border-bottom: 1px solid rgba(250,245,237,0.08); }
+.orders-table td { padding: 12px 14px; font-size: 0.84rem; border-bottom: 1px solid rgba(250,245,237,0.05); vertical-align: middle; }
+.orders-table tr:hover td { background: rgba(250,245,237,0.02); }
+.status-badge { padding: 3px 10px; border-radius: 99px; font-size: 0.72rem; font-weight: 700; }
+.status-new { background: rgba(232,84,10,0.15); color: var(--ember-glow); }
+.status-processing { background: rgba(74,158,186,0.15); color: var(--cold); }
+.status-done { background: rgba(42,122,58,0.15); color: #6adb80; }
+
+/* SHEETS */
+.sheets-box { background: rgba(250,245,237,0.03); border: 1px solid rgba(250,245,237,0.08); border-radius: 6px; padding: 24px; margin-bottom: 20px; }
+.sheets-status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 99px; font-size: 0.75rem; font-weight: 700; }
+.sheets-connected { background: rgba(42,122,58,0.15); color: #6adb80; }
+.sheets-disconnected { background: rgba(250,245,237,0.06); color: rgba(250,245,237,0.4); }
+
+/* STOCK TABLE */
+.stock-table { width: 100%; border-collapse: collapse; }
+.stock-table th { text-align: left; padding: 8px 12px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(250,245,237,0.35); border-bottom: 1px solid rgba(250,245,237,0.08); }
+.stock-table td { padding: 10px 12px; font-size: 0.83rem; border-bottom: 1px solid rgba(250,245,237,0.05); }
+
+/* TOAST */
+.toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(80px); background: rgba(26,20,16,0.98); border: 1px solid rgba(232,84,10,0.3); border-radius: 6px; padding: 12px 24px; display: flex; align-items: center; gap: 10px; font-size: 0.88rem; font-weight: 600; transition: transform 0.3s; z-index: 999; white-space: nowrap; }
+.toast.show { transform: translateX(-50%) translateY(0); }
+
+/* TABS hidden */
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+@media (max-width: 768px) {
+  .admin-content { padding: 20px 16px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .admin-header { padding: 12px 16px; }
+  .orders-table { font-size: 0.75rem; }
+  .orders-table th, .orders-table td { padding: 8px 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">Dūmo <span>Pilvas</span></div>
+    <div class="login-sub">Administratoriaus zona</div>
+    <input type="password" class="login-input" id="pwdInput" placeholder="Slaptažodis" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="login-btn" onclick="doLogin()">🔐 Prisijungti</button>
+    <div class="login-error" id="loginError"></div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+
+  <div class="admin-header">
+    <div>
+      <div class="admin-logo">Dūmo <span>Pilvas</span></div>
+      <div class="admin-title">Admin Skydelis</div>
+    </div>
+    <button class="logout-btn" onclick="doLogout()">Atsijungti</button>
+  </div>
+
+  <nav class="admin-nav">
+    <button class="admin-nav-btn active" onclick="showTab('dashboard')">📊 Suvestinė</button>
+    <button class="admin-nav-btn" onclick="showTab('addproduct')">➕ Pridėti prekę</button>
+    <button class="admin-nav-btn" onclick="showTab('products')">📦 Prekės</button>
+    <button class="admin-nav-btn" onclick="showTab('orders')">📋 Užsakymai</button>
+    <button class="admin-nav-btn" onclick="showTab('sheets')">📊 Google Sheets</button>
+  </nav>
+
+  <div class="admin-content">
+
+    <!-- DASHBOARD -->
+    <div class="tab-pane active" id="tab-dashboard">
+      <div class="stats-grid" id="statsGrid"></div>
+      <div class="section-title">Paskutiniai <span>užsakymai</span></div>
+      <div id="recentOrders"></div>
+    </div>
+
+    <!-- ADD PRODUCT -->
+    <div class="tab-pane" id="tab-addproduct">
+      <div class="section-title">Pridėti naują <span>prekę</span></div>
+      <div class="form-grid">
+        <div>
+          <label class="form-label">Pavadinimas *</label>
+          <input class="form-input" id="ap-name" placeholder="pvz. Nerūdijančio plieno spiralė">
+        </div>
+        <div>
+          <label class="form-label">Kaina (€) *</label>
+          <input class="form-input" id="ap-price" type="number" step="0.01" placeholder="24.99">
+        </div>
+        <div>
+          <label class="form-label">Kategorija</label>
+          <select class="form-input" id="ap-cat">
+            <option value="cold">❄️ Šaltam rūkymui</option>
+            <option value="hot">🔥 Karštam rūkymui</option>
+            <option value="tools">🛠️ Įrankiai</option>
+            <option value="wood">🪵 Mediena</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">Ženklas</label>
+          <select class="form-input" id="ap-badge">
+            <option value="">Nėra</option>
+            <option value="new">🆕 Naujiena</option>
+            <option value="best">⭐ Bestseller</option>
+            <option value="sale">🏷️ Išpardavimas</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label">Sena kaina (€, nebūtina)</label>
+          <input class="form-input" id="ap-oldprice" type="number" step="0.01" placeholder="34.99">
+        </div>
+        <div>
+          <label class="form-label">Pradinis likutis (vnt.)</label>
+          <input class="form-input" id="ap-stock" type="number" placeholder="50" value="50">
+        </div>
+        <div class="form-full">
+          <label class="form-label">Nuotraukos (iki 3 vnt.) – įkelkite arba įveskite URL</label>
+          <div class="img-upload-grid">
+            <div class="img-slot">
+              <label class="img-slot-label" for="ap-file-0">📁 1 nuotrauka</label>
+              <input type="file" id="ap-file-0" accept="image/*" style="display:none" onchange="handleUpload(this,0,'ap')">
+              <img id="ap-preview-0" class="img-preview">
+              <input class="form-input" id="ap-img-0" placeholder="arba URL..." style="margin-top:6px;font-size:0.78rem;">
+            </div>
+            <div class="img-slot">
+              <label class="img-slot-label" for="ap-file-1">📁 2 nuotrauka</label>
+              <input type="file" id="ap-file-1" accept="image/*" style="display:none" onchange="handleUpload(this,1,'ap')">
+              <img id="ap-preview-1" class="img-preview">
+              <input class="form-input" id="ap-img-1" placeholder="arba URL..." style="margin-top:6px;font-size:0.78rem;">
+            </div>
+            <div class="img-slot">
+              <label class="img-slot-label" for="ap-file-2">📁 3 nuotrauka</label>
+              <input type="file" id="ap-file-2" accept="image/*" style="display:none" onchange="handleUpload(this,2,'ap')">
+              <img id="ap-preview-2" class="img-preview">
+              <input class="form-input" id="ap-img-2" placeholder="arba URL..." style="margin-top:6px;font-size:0.78rem;">
+            </div>
+          </div>
+        </div>
+        <div class="form-full">
+          <label class="form-label">Aprašymas</label>
+          <textarea class="form-input" id="ap-desc" rows="3" placeholder="Trumpas prekės aprašymas..."></textarea>
+        </div>
+        <div class="form-full">
+          <label class="form-label">Žymos (per kablelį)</label>
+          <input class="form-input" id="ap-tags" placeholder="pvz. BBQ, Rūkymas, Natūralus">
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="addProduct()">➕ Pridėti prekę</button>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div class="tab-pane" id="tab-products">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <div class="section-title" style="margin:0;border:none;">Visos <span>prekės</span></div>
+        <button class="btn btn-danger btn-sm" onclick="if(confirm('Atstatyti į numatytuosius?')){resetProducts();}">🔄 Atstatyti</button>
+      </div>
+      <div class="products-list" id="productsList"></div>
+    </div>
+
+    <!-- ORDERS -->
+    <div class="tab-pane" id="tab-orders">
+      <div class="section-title">Visi <span>užsakymai</span></div>
+      <div style="overflow-x:auto;">
+        <table class="orders-table" id="ordersTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Data</th>
+              <th>Klientas</th>
+              <th>Prekės</th>
+              <th>Suma</th>
+              <th>Pristatymas</th>
+              <th>Statusas</th>
+            </tr>
+          </thead>
+          <tbody id="ordersBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SHEETS -->
+    <div class="tab-pane" id="tab-sheets">
+      <div class="section-title">Google Sheets <span>Integracija</span></div>
+
+      <div class="sheets-box">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;">
+          <div>
+            <div style="font-size:1rem;font-weight:700;margin-bottom:6px;">Ryšio statusas</div>
+            <div id="sheetsStatus" class="sheets-status sheets-disconnected">⚫ Neprijungta</div>
+          </div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" onclick="syncFromSheets()">🔄 Sinchronizuoti</button>
+            <button class="btn btn-secondary btn-sm" onclick="openSheets()">📊 Atidaryti Sheets</button>
+          </div>
+        </div>
+        <label class="form-label">Apps Script Web App URL</label>
+        <div style="display:flex;gap:8px;margin-bottom:8px;">
+          <input class="form-input" id="sheets-url" placeholder="https://script.google.com/macros/s/.../exec" style="flex:1;">
+          <button class="btn btn-primary btn-sm" onclick="saveSheetUrl()">💾 Išsaugoti</button>
+        </div>
+        <div id="lastSync" style="font-size:0.78rem;color:rgba(250,245,237,0.4);">🕐 Dar nesinchronizuota</div>
+      </div>
+
+      <div class="section-title">Dabartiniai <span>likučiai</span></div>
+      <div style="overflow-x:auto;">
+        <table class="stock-table" id="stockTable">
+          <thead><tr><th>Prekė</th><th>Kaina</th><th>Likutis</th><th>Keisti likutį</th></tr></thead>
+          <tbody id="stockBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span id="toastIcon">🔥</span><span id="toastMsg"></span></div>
+
+<script>
+// ========== CONFIG ==========
+const SHEETS_DIRECT_URL = 'https://docs.google.com/spreadsheets/d/1KasEF1hW1WceAw1QdalZ6NT3_4-YLxorPWaocD-AdNM/edit';
+
+// ========== AUTH ==========
+async function hashPwd(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+async function doLogin() {
+  const pwd = document.getElementById('pwdInput').value;
+  const h = await hashPwd(pwd);
+  if (h === 'df6ef04aa918dafcbd1817d60906d86d8fbd19a58ad94761c59b034d340efc8d') {
+    sessionStorage.setItem('dp_admin', '1');
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    initAdmin();
+  } else {
+    document.getElementById('loginError').textContent = '❌ Neteisingas slaptažodis';
+    document.getElementById('pwdInput').value = '';
+    setTimeout(() => document.getElementById('loginError').textContent = '', 3000);
+  }
+}
+
+function doLogout() {
+  sessionStorage.removeItem('dp_admin');
+  location.reload();
+}
+
+// Check if already logged in
+if (sessionStorage.getItem('dp_admin') === '1') {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminPanel').style.display = 'block';
+}
+
+// ========== STATE ==========
+let products = JSON.parse(localStorage.getItem('dp_products') || '[]');
+let orders   = JSON.parse(localStorage.getItem('dp_orders')   || '[]');
+let sheetsUrl = localStorage.getItem('dp_sheets_url') || '';
+let uploadedImgs = [null, null, null];
+
+function saveProducts() { localStorage.setItem('dp_products', JSON.stringify(products)); }
+function saveOrders()   { localStorage.setItem('dp_orders',   JSON.stringify(orders)); }
+
+// ========== TABS ==========
+function showTab(name) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.admin-nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+  if (name === 'products')   renderProducts();
+  if (name === 'orders')     renderOrders();
+  if (name === 'sheets')     renderSheets();
+  if (name === 'dashboard')  renderDashboard();
+}
+
+// ========== INIT ==========
+function initAdmin() {
+  products  = JSON.parse(localStorage.getItem('dp_products') || '[]');
+  orders    = JSON.parse(localStorage.getItem('dp_orders')   || '[]');
+  sheetsUrl = localStorage.getItem('dp_sheets_url') || '';
+  renderDashboard();
+  if (sheetsUrl) {
+    const el = document.getElementById('sheets-url');
+    if (el) el.value = sheetsUrl;
+  }
+}
+
+// ========== DASHBOARD ==========
+function renderDashboard() {
+  const total    = orders.reduce((s, o) => s + o.total, 0);
+  const newCount = orders.filter(o => o.status === 'new').length;
+  document.getElementById('statsGrid').innerHTML = `
+    <div class="stat-card"><div class="stat-num">${orders.length}</div><div class="stat-label">Visi užsakymai</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:var(--ember-glow)">${newCount}</div><div class="stat-label">Nauji užsakymai</div></div>
+    <div class="stat-card"><div class="stat-num">${products.length}</div><div class="stat-label">Prekės</div></div>
+    <div class="stat-card"><div class="stat-num">${total.toFixed(0)}€</div><div class="stat-label">Iš viso pardavimų</div></div>
+  `;
+  const recent = orders.slice(0, 5);
+  if (!recent.length) {
+    document.getElementById('recentOrders').innerHTML = '<p style="color:rgba(250,245,237,0.3);padding:20px 0">Užsakymų dar nėra.</p>';
+    return;
+  }
+  document.getElementById('recentOrders').innerHTML = `
+    <div style="overflow-x:auto;">
+    <table class="orders-table">
+      <thead><tr><th>#</th><th>Klientas</th><th>Prekės</th><th>Suma</th><th>Statusas</th></tr></thead>
+      <tbody>${recent.map(o => `
+        <tr>
+          <td style="color:var(--ember)">#${o.id}</td>
+          <td>${o.name}<br><span style="color:rgba(250,245,237,0.4);font-size:0.75rem">${o.tel}</span></td>
+          <td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${o.items.map(i=>i.name+'×'+i.qty).join(', ')}</td>
+          <td style="color:var(--ember);font-weight:700">${o.total.toFixed(2)}€</td>
+          <td><span class="status-badge status-${o.status}">${o.status==='new'?'🔴 Naujas':o.status==='processing'?'🔵 Ruošiamas':'🟢 Išsiųstas'}</span></td>
+        </tr>`).join('')}
+      </tbody>
+    </table></div>`;
+}
+
+// ========== PRODUCTS ==========
+function renderProducts() {
+  products = JSON.parse(localStorage.getItem('dp_products') || '[]');
+  const el = document.getElementById('productsList');
+  if (!products.length) { el.innerHTML = '<p style="color:rgba(250,245,237,0.3);padding:20px 0">Prekių nėra.</p>'; return; }
+  el.innerHTML = products.map(p => `
+    <div class="product-row">
+      <img src="${p.img||''}" alt="${p.name}" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=60'">
+      <div class="product-row-info">
+        <div class="product-row-name">${p.name}</div>
+        <div class="product-row-meta">${p.cat==='cold'?'❄️ Šaltam':p.cat==='hot'?'🔥 Karštam':p.cat==='tools'?'🛠️ Įrankiai':'🪵 Mediena'} · Likutis: ${p.stock??0} vnt.</div>
+      </div>
+      <div class="product-row-price">${p.price===0?'—':p.price.toFixed(2)+'€'}</div>
+      <div class="product-row-actions">
+        <button class="btn btn-secondary btn-sm" onclick="editProduct(${p.id})">✏️ Redaguoti</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteProduct(${p.id})">🗑️</button>
+      </div>
+    </div>`).join('');
+}
+
+function addProduct() {
+  const name = document.getElementById('ap-name').value.trim();
+  const price = parseFloat(document.getElementById('ap-price').value);
+  if (!name || isNaN(price)) { toast('Pavadinimas ir kaina privalomi', '⚠️'); return; }
+  const imgs = [];
+  for (let i = 0; i < 3; i++) {
+    const src = uploadedImgs[i] || document.getElementById('ap-img-'+i).value.trim();
+    if (src) imgs.push(src);
+  }
+  if (!imgs.length) { toast('Reikia bent vienos nuotraukos', '⚠️'); return; }
+  const op = parseFloat(document.getElementById('ap-oldprice').value);
+  const sv = parseInt(document.getElementById('ap-stock').value);
+  const tags = document.getElementById('ap-tags').value.split(',').map(t=>t.trim()).filter(Boolean);
+  const p = {
+    id: Date.now(),
+    name,
+    price,
+    oldPrice: isNaN(op) ? null : op,
+    cat: document.getElementById('ap-cat').value,
+    badge: document.getElementById('ap-badge').value,
+    img: imgs[0], imgs,
+    desc: document.getElementById('ap-desc').value.trim(),
+    stock: isNaN(sv) ? 50 : sv,
+    tags
+  };
+  products.unshift(p);
+  saveProducts();
+  toast(`"${name}" pridėta! ✅`, '✅');
+  ['ap-name','ap-price','ap-desc','ap-oldprice','ap-stock','ap-tags'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  for (let i=0;i<3;i++) {
+    const inp=document.getElementById('ap-img-'+i); if(inp) inp.value='';
+    const prev=document.getElementById('ap-preview-'+i); if(prev){prev.src='';prev.style.display='none';}
+  }
+  uploadedImgs=[null,null,null];
+}
+
+function deleteProduct(id) {
+  if (!confirm('Ištrinti šią prekę?')) return;
+  products = products.filter(p => p.id !== id);
+  saveProducts();
+  renderProducts();
+  toast('Prekė ištrinta', '🗑️');
+}
+
+function editProduct(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  const imgs = p.imgs || [p.img||'','',''];
+  while (imgs.length < 3) imgs.push('');
+  const ov = document.createElement('div');
+  ov.id = 'editOv';
+  ov.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;';
+  ov.innerHTML = `
+    <div style="background:#1a1208;border:1px solid rgba(250,245,237,0.1);border-radius:8px;padding:28px;width:100%;max-width:580px;max-height:90vh;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+        <h3 style="font-family:'Playfair Display',serif;color:#faf5ed;">✏️ Redaguoti prekę</h3>
+        <button onclick="document.getElementById('editOv').remove()" style="background:none;border:none;color:rgba(250,245,237,0.5);font-size:1.3rem;cursor:pointer;">✕</button>
+      </div>
+      <div class="form-grid">
+        <div><label class="form-label">Pavadinimas</label><input class="form-input" id="ep-name" value="${p.name.replace(/"/g,'&quot;')}"></div>
+        <div><label class="form-label">Kaina (€)</label><input class="form-input" id="ep-price" type="number" step="0.01" value="${p.price}"></div>
+        <div><label class="form-label">Kategorija</label>
+          <select class="form-input" id="ep-cat">
+            <option value="cold" ${p.cat==='cold'?'selected':''}>❄️ Šaltam rūkymui</option>
+            <option value="hot" ${p.cat==='hot'?'selected':''}>🔥 Karštam rūkymui</option>
+            <option value="tools" ${p.cat==='tools'?'selected':''}>🛠️ Įrankiai</option>
+            <option value="wood" ${p.cat==='wood'?'selected':''}>🪵 Mediena</option>
+          </select>
+        </div>
+        <div><label class="form-label">Ženklas</label>
+          <select class="form-input" id="ep-badge">
+            <option value="" ${!p.badge?'selected':''}>Nėra</option>
+            <option value="new" ${p.badge==='new'?'selected':''}>🆕 Naujiena</option>
+            <option value="best" ${p.badge==='best'?'selected':''}>⭐ Bestseller</option>
+            <option value="sale" ${p.badge==='sale'?'selected':''}>🏷️ Išpardavimas</option>
+          </select>
+        </div>
+        <div><label class="form-label">Sena kaina (€)</label><input class="form-input" id="ep-oldprice" type="number" step="0.01" value="${p.oldPrice||''}"></div>
+        <div><label class="form-label">Likutis (vnt.)</label><input class="form-input" id="ep-stock" type="number" value="${p.stock||0}"></div>
+        <div class="form-full"><label class="form-label">Aprašymas</label><textarea class="form-input" id="ep-desc" rows="3">${p.desc||''}</textarea></div>
+        <div class="form-full">
+          <label class="form-label">Nuotraukos URL</label>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            ${[0,1,2].map(i=>`<input class="form-input" id="ep-img-${i}" placeholder="${i+1} nuotrauka URL..." value="${imgs[i]||''}">`).join('')}
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:20px;">
+        <button class="btn btn-primary" onclick="saveEdit(${id})" style="flex:1;">💾 Išsaugoti</button>
+        <button class="btn btn-secondary" onclick="document.getElementById('editOv').remove()">Atšaukti</button>
+      </div>
+    </div>`;
+  document.body.appendChild(ov);
+}
+
+function saveEdit(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+  const name = document.getElementById('ep-name').value.trim();
+  const price = parseFloat(document.getElementById('ep-price').value);
+  if (!name || isNaN(price)) { toast('Pavadinimas ir kaina privalomi', '⚠️'); return; }
+  const imgs = [0,1,2].map(i => document.getElementById('ep-img-'+i).value.trim()).filter(Boolean);
+  if (!imgs.length) { toast('Reikia bent vienos nuotraukos', '⚠️'); return; }
+  const op = parseFloat(document.getElementById('ep-oldprice').value);
+  const sv = parseInt(document.getElementById('ep-stock').value);
+  p.name = name; p.price = price;
+  p.oldPrice = isNaN(op) ? null : op;
+  p.cat = document.getElementById('ep-cat').value;
+  p.badge = document.getElementById('ep-badge').value;
+  p.desc = document.getElementById('ep-desc').value.trim();
+  p.stock = isNaN(sv) ? p.stock : sv;
+  p.img = imgs[0]; p.imgs = imgs;
+  saveProducts();
+  renderProducts();
+  document.getElementById('editOv').remove();
+  toast(`"${name}" atnaujinta! ✅`, '✅');
+}
+
+function resetProducts() {
+  localStorage.removeItem('dp_products');
+  products = [];
+  saveProducts();
+  renderProducts();
+  toast('Prekės atstatytos', '🔄');
+}
+
+// ========== ORDERS ==========
+function renderOrders() {
+  orders = JSON.parse(localStorage.getItem('dp_orders') || '[]');
+  const tbody = document.getElementById('ordersBody');
+  if (!orders.length) { tbody.innerHTML = '<tr><td colspan="7" style="color:rgba(250,245,237,0.3);padding:20px 0">Užsakymų dar nėra.</td></tr>'; return; }
+  tbody.innerHTML = orders.map(o => `
+    <tr>
+      <td style="color:var(--ember);font-weight:700">#${o.id}</td>
+      <td>${o.date}</td>
+      <td>${o.name}<br><span style="color:rgba(250,245,237,0.4);font-size:0.73rem">${o.tel}</span><br><span style="color:rgba(250,245,237,0.4);font-size:0.73rem">${o.email}</span></td>
+      <td style="max-width:220px;font-size:0.78rem">${o.items.map(i=>i.name+' ×'+i.qty).join('<br>')}<br><span style="color:rgba(250,245,237,0.4)">${o.address}</span></td>
+      <td style="font-weight:700;color:var(--ember)">${o.total.toFixed(2)}€<br><span style="font-size:0.72rem;color:rgba(250,245,237,0.4)">${o.deliveryCost}</span></td>
+      <td style="font-size:0.78rem">${o.method==='post'?'📦 Paštomatas':'🚚 Kurjeris'}</td>
+      <td>
+        <select style="background:rgba(250,245,237,0.06);border:1px solid rgba(250,245,237,0.12);color:var(--cream);padding:5px 8px;border-radius:3px;font-family:inherit;font-size:0.75rem;cursor:pointer;" onchange="updateStatus(${o.id},this.value)">
+          <option value="new" ${o.status==='new'?'selected':''}>🔴 Naujas</option>
+          <option value="processing" ${o.status==='processing'?'selected':''}>🔵 Ruošiamas</option>
+          <option value="done" ${o.status==='done'?'selected':''}>🟢 Išsiųstas</option>
+        </select>
+      </td>
+    </tr>`).join('');
+}
+
+function updateStatus(id, status) {
+  orders = JSON.parse(localStorage.getItem('dp_orders') || '[]');
+  const o = orders.find(x => x.id === id);
+  if (o) { o.status = status; localStorage.setItem('dp_orders', JSON.stringify(orders)); toast('Statusas atnaujintas ✅', '✅'); }
+}
+
+// ========== SHEETS ==========
+function renderSheets() {
+  const urlEl = document.getElementById('sheets-url');
+  if (urlEl && sheetsUrl) urlEl.value = sheetsUrl;
+  updateSheetsStatus();
+  renderStockTable();
+}
+
+function updateSheetsStatus() {
+  const el = document.getElementById('sheetsStatus');
+  if (!el) return;
+  if (sheetsUrl) {
+    el.className = 'sheets-status sheets-connected';
+    el.textContent = '🟢 Prijungta';
+  } else {
+    el.className = 'sheets-status sheets-disconnected';
+    el.textContent = '⚫ Neprijungta';
+  }
+}
+
+function saveSheetUrl() {
+  sheetsUrl = document.getElementById('sheets-url').value.trim();
+  localStorage.setItem('dp_sheets_url', sheetsUrl);
+  updateSheetsStatus();
+  if (sheetsUrl) { toast('URL išsaugotas! Sinchronizuojama...', '📊'); syncFromSheets(); }
+  else toast('URL išvalytas', '🗑️');
+}
+
+function openSheets() {
+  window.open(SHEETS_DIRECT_URL, '_blank');
+}
+
+async function syncFromSheets() {
+  if (!sheetsUrl) { toast('Google Sheets URL nenurodytas', '⚠️'); return; }
+  toast('Sinchronizuojama...', '🔄');
+  try {
+    const res = await fetch(sheetsUrl + '?action=getProducts');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    if (!data.ok || !data.products) throw new Error('Blogi duomenys');
+    products = JSON.parse(localStorage.getItem('dp_products') || '[]');
+    let updated = 0;
+    data.products.forEach(row => {
+      const id = parseInt(row['id']);
+      const p = products.find(x => x.id === id);
+      if (p) {
+        if (row['kaina']   !== undefined && row['kaina']   !== '') p.price = parseFloat(row['kaina']) || 0;
+        if (row['likutis'] !== undefined && row['likutis'] !== '') p.stock = parseInt(row['likutis']) || 0;
+        updated++;
+      }
+    });
+    saveProducts();
+    renderStockTable();
+    const now = new Date().toLocaleString('lt-LT');
+    localStorage.setItem('dp_last_sync', now);
+    const syncEl = document.getElementById('lastSync');
+    if (syncEl) syncEl.innerHTML = `✅ Paskutinė sinchronizacija: ${now}`;
+    toast(`Atnaujinta ${updated} prekių ✅`, '✅');
+  } catch(e) {
+    toast('Klaida: ' + e.message, '❌');
+  }
+}
+
+function renderStockTable() {
+  products = JSON.parse(localStorage.getItem('dp_products') || '[]');
+  const tbody = document.getElementById('stockBody');
+  if (!tbody) return;
+  tbody.innerHTML = products.map(p => {
+    const s = p.stock ?? 0;
+    const color = s === 0 ? '#f07070' : s <= 5 ? '#f0c040' : '#6adb80';
+    return `<tr>
+      <td>${p.name}</td>
+      <td style="color:var(--ember)">${p.price.toFixed(2)}€</td>
+      <td style="color:${color};font-weight:700;">${s}</td>
+      <td><input type="number" value="${s}" min="0" style="width:80px;background:rgba(250,245,237,0.07);border:1px solid rgba(250,245,237,0.15);color:var(--cream);padding:5px 8px;border-radius:3px;font-family:inherit;font-size:0.82rem;" onchange="updateStock(${p.id},this.value)"></td>
+    </tr>`;
+  }).join('');
+}
+
+function updateStock(id, val) {
+  products = JSON.parse(localStorage.getItem('dp_products') || '[]');
+  const p = products.find(x => x.id === id);
+  if (p) { p.stock = parseInt(val)||0; saveProducts(); toast(`Likutis atnaujintas: ${p.stock} vnt.`, '📦'); }
+}
+
+// ========== UPLOAD ==========
+function handleUpload(input, idx, prefix) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    uploadedImgs[idx] = e.target.result;
+    const prev = document.getElementById(prefix+'-preview-'+idx);
+    if (prev) { prev.src = e.target.result; prev.style.display = 'block'; }
+    toast('Nuotrauka įkelta!', '🖼️');
+  };
+  reader.readAsDataURL(file);
+}
+
+// ========== TOAST ==========
+let toastTimer;
+function toast(msg, icon = '🔥') {
+  document.getElementById('toastMsg').textContent = msg;
+  document.getElementById('toastIcon').textContent = icon;
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ========== AUTO LOGIN CHECK ==========
+window.addEventListener('load', () => {
+  if (sessionStorage.getItem('dp_admin') === '1') {
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('adminPanel').style.display = 'block';
+    initAdmin();
+  }
+});
+</script>
+</body>
+</html>
