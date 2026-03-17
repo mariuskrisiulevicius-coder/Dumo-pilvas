@@ -690,12 +690,29 @@ async function syncFromSheets() {
     let updated = 0;
     data.products.forEach(row => {
       const id = parseInt(row['id']);
-      const p = products.find(x => x.id === id);
-      if (p) {
-        if (row['kaina']   !== undefined && row['kaina']   !== '') p.price = parseFloat(row['kaina']) || 0;
-        if (row['likutis'] !== undefined && row['likutis'] !== '') p.stock = parseInt(row['likutis']) || 0;
-        updated++;
+      const price = parseFloat(row['kaina']) || 0;
+      const stock = parseInt(row['likutis']) || 0;
+      const name  = row['pavadinimas'] || '';
+      const cat   = row['kategorija'] || 'tools';
+      const img   = row['nuotrauka'] || '';
+      const existing = products.find(x => x.id === id);
+      if (existing) {
+        existing.price = price;
+        existing.stock = stock;
+        existing.name  = name || existing.name;
+        existing.cat   = cat  || existing.cat;
+        if (img) existing.img = img;
+      } else {
+        // Pridėti naują prekę iš Sheets
+        products.push({
+          id, name, price, stock, cat,
+          img: img || '',
+          desc: row['aprasymas'] || '',
+          badge: row['badge'] || '',
+          tags: []
+        });
       }
+      updated++;
     });
     saveProducts();
     renderStockTable();
