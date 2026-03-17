@@ -17,7 +17,7 @@
   --wood: #888888;
   --wood-light: #aaaaaa;
   --wood-pale: #eeeeee;
-  --smoke: rgba(255,34,68,0.06);
+  --smoke: rgba(204,34,51,0.06);
   --cream: #f0e8ea;
   --text-dark: #120808;
   --text-mid: #442020;
@@ -52,7 +52,7 @@ body { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
 /* NAV */
 nav {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 40px; left: 0; right: 0;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -61,10 +61,10 @@ nav {
   transition: all 0.4s ease, transform 0.35s cubic-bezier(0.4,0,0.2,1);
 }
 nav.scrolled {
-  background: rgba(26,20,16,0.95);
+  background: rgba(18,8,8,0.97);
   backdrop-filter: blur(12px);
   padding: 14px 60px;
-  border-bottom: 1px solid rgba(232,84,10,0.2);
+  border-bottom: 2px solid #cc2233;
 }
 .nav-logo {
   font-family: 'Playfair Display', serif;
@@ -207,7 +207,7 @@ nav.scrolled {
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: 120px 60px 80px;
+  padding: 160px 60px 80px;
   max-width: 680px;
 }
 .hero-badge {
@@ -1670,66 +1670,329 @@ body { background: #120808 !important; color: #f0e8ea !important; cursor: defaul
 ::-webkit-scrollbar-thumb { background: #cc2233 !important; }
 nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
 .nav-logo span { color: #cc2233 !important; }
-.nav-links a { font-weight: 600 !important; }
 .nav-links a::after { background: #cc2233 !important; height: 2px !important; }
 .nav-cta { background: #cc2233 !important; color: #ffffff !important; border-radius: 4px !important; font-weight: 700 !important; outline: 2px solid #cc2233 !important; outline-offset: 2px !important; }
 .nav-cta:hover { background: #ffffff !important; color: #cc2233 !important; }
-.hero-bg { background: radial-gradient(ellipse 60% 80% at 70% 60%, rgba(255,34,68,0.25) 0%, transparent 60%), linear-gradient(165deg, #080204 0%, #120808 40%, #1c0810 100%) !important; }
+.hero-bg { background: radial-gradient(ellipse 60% 80% at 70% 60%, rgba(204,34,51,0.2) 0%, transparent 60%), linear-gradient(165deg, #080204 0%, #120808 40%, #1c0810 100%) !important; }
 .hero-title em { color: #cc2233 !important; }
-.hero-badge { border-radius: 4px !important; border: 2px solid #cc2233 !important; background: transparent !important; color: #cc2233 !important; font-family: 'Space Mono', monospace !important; font-size: 0.7rem !important; }
+.hero-badge { border-radius: 4px !important; border: 2px solid #cc2233 !important; background: transparent !important; color: #cc2233 !important; }
 .hero-badge::before { background: #cc2233 !important; }
-.hero-cta { background: #cc2233 !important; color: #ffffff !important; border-radius: 4px !important; font-weight: 700 !important; letter-spacing: 0.05em !important; outline: 3px solid #cc2233 !important; outline-offset: 3px !important; padding: 18px 44px !important; }
-.hero-cta:hover { background: #ffffff !important; color: #cc2233 !important; outline-color: #ffffff !important; transform: translate(-2px, -2px) !important; box-shadow: 4px 4px 0 #cc2233 !important; }
+.hero-cta { background: #cc2233 !important; color: #ffffff !important; border-radius: 4px !important; font-weight: 700 !important; outline: 3px solid #cc2233 !important; outline-offset: 3px !important; padding: 18px 44px !important; }
+.hero-cta:hover { background: #ffffff !important; color: #cc2233 !important; transform: translate(-2px,-2px) !important; box-shadow: 4px 4px 0 #cc2233 !important; }
 .hero-stat-num { color: #cc2233 !important; font-family: 'Space Mono', monospace !important; }
-.hero-stat-label { color: rgba(255,240,242,0.5) !important; }
-#cold { background: linear-gradient(180deg, #120808 0%, #0e1218 50%, #120808 100%) !important; }
-#hot { background: linear-gradient(180deg, #120808 0%, #1c0810 50%, #120808 100%) !important; }
-#bbqklasika { background: #1c0810 !important; border-color: rgba(255,34,68,0.2) !important; }
-#tools { background: #1c1010 !important; }
-#recipes { background: linear-gradient(180deg, #120808 0%, #1c1010 50%, #120808 100%) !important; }
-.section-label { color: #cc2233 !important; }
-.section-label::before { background: #cc2233 !important; }
-.section-heading em { color: #cc2233 !important; }
 .product-card { border-radius: 6px !important; border: 2px solid rgba(255,255,255,0.08) !important; background: #1c1010 !important; }
-.product-card:hover { border-color: #cc2233 !important; transform: translate(-2px, -2px) !important; box-shadow: 4px 4px 0 #cc2233 !important; }
-.product-badge-wrap .p-badge.best { background: #cc2233 !important; }
-.product-badge-wrap .p-badge.new { background: #ff8800 !important; }
-.price-current { color: #cc2233 !important; font-family: 'Space Mono', monospace !important; font-size: 1.1rem !important; }
-.add-to-cart-btn { background: #cc2233 !important; color: #ffffff !important; border-radius: 4px !important; font-weight: 700 !important; letter-spacing: 0.05em !important; font-size: 0.75rem !important; }
+.product-card:hover { border-color: #cc2233 !important; transform: translate(-2px,-2px) !important; box-shadow: 4px 4px 0 #cc2233 !important; }
+.price-current { color: #cc2233 !important; font-family: 'Space Mono', monospace !important; }
+.add-to-cart-btn { background: #cc2233 !important; color: #ffffff !important; border-radius: 4px !important; font-weight: 700 !important; }
 .add-to-cart-btn:hover { background: #ffffff !important; color: #cc2233 !important; outline: 2px solid #cc2233 !important; }
 .add-to-cart-btn:disabled { background: rgba(255,255,255,0.1) !important; color: rgba(255,255,255,0.3) !important; outline: none !important; }
-.filter-btn { border-radius: 4px !important; border: 2px solid rgba(255,255,255,0.15) !important; font-weight: 600 !important; color: rgba(255,240,242,0.6) !important; }
+.filter-btn { border-radius: 4px !important; border: 2px solid rgba(255,255,255,0.15) !important; font-weight: 600 !important; }
 .filter-btn.active, .filter-btn:hover { background: #cc2233 !important; color: #ffffff !important; border-color: #cc2233 !important; }
-.tag { border-radius: 4px !important; border-width: 2px !important; }
-.section-recipe-btn { border-radius: 4px !important; border-width: 2px !important; }
-#cold .section-recipe-btn { color: #ff8800 !important; border-color: rgba(255,136,0,0.4) !important; background: rgba(255,136,0,0.08) !important; }
-#cold .section-recipe-btn:hover { background: rgba(255,136,0,0.2) !important; border-color: #ff8800 !important; }
-#hot .section-recipe-btn { color: #cc2233 !important; border-color: rgba(255,34,68,0.4) !important; background: rgba(255,34,68,0.08) !important; }
-.submit-order-btn { background: #cc2233 !important; border-radius: 4px !important; color: #ffffff !important; font-weight: 700 !important; letter-spacing: 0.05em !important; }
+.tag { border-radius: 4px !important; }
+.section-recipe-btn { border-radius: 4px !important; }
+.submit-order-btn { background: #cc2233 !important; border-radius: 4px !important; color: #ffffff !important; font-weight: 700 !important; }
 .submit-order-btn:hover { background: #ffffff !important; color: #cc2233 !important; }
 .recipe-card { border-radius: 6px !important; border: 2px solid rgba(255,255,255,0.06) !important; }
-.recipe-card:hover { border-color: #cc2233 !important; transform: translate(-2px, -2px) !important; box-shadow: 4px 4px 0 #cc2233 !important; }
-.recipe-temp-badge.badge-hot { background: #cc2233 !important; }
-.recipe-temp-badge.badge-cold { background: #ff8800 !important; }
-.tool-item { border-radius: 6px !important; border-width: 2px !important; }
-.tool-item:hover { border-color: rgba(255,34,68,0.4) !important; }
-.tool-name { color: #f0e8ea !important; }
-#scrollTopBtn { border-radius: 4px !important; background: #cc2233 !important; outline: 2px solid #cc2233 !important; outline-offset: 2px !important; }
-.bbq-preview-card { border-color: rgba(255,34,68,0.2) !important; }
-.bbq-preview-card:hover { background: rgba(255,34,68,0.1) !important; border-color: rgba(255,34,68,0.5) !important; }
-.bbq-preview-temp { color: #cc2233 !important; }
-.form-input { background: rgba(255,240,242,0.06) !important; border-color: rgba(255,255,255,0.15) !important; border-radius: 4px !important; }
-.form-input:focus { border-color: #cc2233 !important; }
-.method-option.selected { border-color: #cc2233 !important; }
-.cart-drawer { border-left: 2px solid #cc2233 !important; }
-.modal { border: 2px solid rgba(255,34,68,0.2) !important; border-radius: 6px !important; }
-.product-modal { border: 2px solid rgba(255,34,68,0.2) !important; border-radius: 6px !important; }
+.recipe-card:hover { border-color: #cc2233 !important; transform: translate(-2px,-2px) !important; box-shadow: 4px 4px 0 #cc2233 !important; }
+#scrollTopBtn { border-radius: 4px !important; background: #cc2233 !important; }
+
+/* ===== PROMO BANNER ===== */
+#promoBanner {
+  position: fixed; bottom: 28px; left: 28px; z-index: 500;
+  max-width: 300px;
+  background: #1a0808;
+  border: 1px solid rgba(204,34,51,0.5);
+  border-left: 4px solid #cc2233;
+  border-radius: 6px;
+  padding: 16px 20px 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(204,34,51,0.1);
+}
+.promo-close {
+  position: absolute; top: 8px; right: 10px;
+  background: none; border: none;
+  color: rgba(240,232,234,0.35); font-size: 0.9rem;
+  cursor: pointer; padding: 2px 6px; transition: color 0.2s;
+}
+.promo-close:hover { color: rgba(240,232,234,0.8); }
+.promo-tag {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #cc2233; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 6px;
+}
+.promo-tag::before { content: ''; width: 16px; height: 1px; background: #cc2233; }
+.promo-text {
+  font-size: 0.9rem; color: rgba(240,232,234,0.9);
+  line-height: 1.5; margin-bottom: 12px;
+}
+.promo-code-wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(204,34,51,0.1);
+  border: 1px dashed rgba(204,34,51,0.5);
+  border-radius: 3px; padding: 8px 12px;
+  cursor: pointer; transition: all 0.2s;
+}
+.promo-code-wrap:hover { background: rgba(204,34,51,0.18); border-color: #cc2233; }
+.promo-code-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 1.05rem; font-weight: 700;
+  letter-spacing: 0.12em; color: #cc2233;
+}
+.promo-copy-hint { font-size: 0.7rem; color: rgba(240,232,234,0.35); }
+.promo-note { font-size: 0.72rem; color: rgba(240,232,234,0.35); margin-top: 8px; text-align: center; }
+
+
+#announcementBar {
+  background: #cc2233;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 60px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 102;
+}
+#announcementBar.hidden { display: none; }
+#announcementBar span { opacity: 0.85; margin: 0 16px; }
+#announcementBar strong { opacity: 1; }
+.announcement-close {
+  position: absolute; right: 16px; top: 50%;
+  transform: translateY(-50%);
+  background: none; border: none; color: white;
+  opacity: 0.6; cursor: pointer; font-size: 1rem;
+  padding: 4px 8px;
+}
+.announcement-close:hover { opacity: 1; }
+@media (max-width: 768px) {
+  #announcementBar { padding: 8px 40px; font-size: 0.75rem; }
+}
+
+.shop-search-wrap {
+  position: relative;
+  max-width: 400px;
+  margin-bottom: 24px;
+}
+.shop-search-input {
+  width: 100%;
+  padding: 12px 44px 12px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  color: var(--cream);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.shop-search-input:focus { border-color: var(--ember); }
+.shop-search-input::placeholder { color: rgba(240,232,234,0.3); }
+.shop-search-icon {
+  position: absolute; right: 14px; top: 50%;
+  transform: translateY(-50%);
+  color: rgba(240,232,234,0.3);
+  font-size: 1rem; pointer-events: none;
+}
+.shop-search-clear {
+  position: absolute; right: 14px; top: 50%;
+  transform: translateY(-50%);
+  background: none; border: none;
+  color: rgba(240,232,234,0.5); cursor: pointer;
+  font-size: 0.9rem; display: none;
+}
+
+#compareBar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: #1a0808;
+  border-top: 2px solid #cc2233;
+  z-index: 300;
+  padding: 12px 24px;
+  display: none;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+#compareBar.show { display: flex; }
+.compare-item {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+.compare-item-remove {
+  background: none; border: none;
+  color: rgba(240,232,234,0.4); cursor: pointer;
+  font-size: 0.85rem; padding: 0 2px;
+}
+.compare-item-remove:hover { color: #cc2233; }
+.compare-btn {
+  background: #cc2233; color: white; border: none;
+  padding: 10px 20px; border-radius: 4px;
+  font-weight: 700; font-size: 0.82rem;
+  cursor: pointer; letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.compare-btn:hover { background: #e03348; }
+.compare-count {
+  font-size: 0.78rem; color: rgba(240,232,234,0.5);
+  white-space: nowrap;
+}
+.compare-clear {
+  background: none; border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(240,232,234,0.5); padding: 8px 14px;
+  border-radius: 4px; font-size: 0.78rem; cursor: pointer;
+}
+.compare-clear:hover { color: var(--cream); border-color: rgba(255,255,255,0.3); }
+
+/* Compare modal */
+#compareModal {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 400; display: none;
+  align-items: flex-start; justify-content: center;
+  padding: 40px 20px; overflow-y: auto;
+}
+#compareModal.open { display: flex; }
+.compare-modal-inner {
+  background: #1a0808;
+  border: 1px solid rgba(204,34,51,0.3);
+  border-radius: 8px;
+  padding: 28px;
+  width: 100%; max-width: 900px;
+  position: relative;
+}
+.compare-modal-close {
+  position: absolute; top: 16px; right: 16px;
+  background: none; border: none; color: rgba(240,232,234,0.5);
+  font-size: 1.3rem; cursor: pointer;
+}
+.compare-table {
+  width: 100%; border-collapse: collapse; margin-top: 20px;
+}
+.compare-table th {
+  padding: 12px 16px; text-align: left;
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(240,232,234,0.4);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.compare-table td {
+  padding: 14px 16px; font-size: 0.88rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  vertical-align: top;
+}
+.compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+.compare-prod-name { font-weight: 700; color: var(--cream); margin-bottom: 4px; }
+.compare-prod-cat { font-size: 0.75rem; color: rgba(240,232,234,0.4); }
+.compare-prod-price { font-family: 'Space Mono', monospace; color: #cc2233; font-weight: 700; font-size: 1.1rem; }
+.compare-prod-desc { font-size: 0.8rem; color: rgba(240,232,234,0.6); line-height: 1.5; }
+
+#faq {
+  background: linear-gradient(180deg, var(--char) 0%, #1a0808 50%, var(--char) 100%);
+  border-top: 1px solid rgba(204,34,51,0.15);
+}
+.faq-item {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.faq-question {
+  width: 100%; background: none; border: none;
+  color: var(--cream); text-align: left;
+  padding: 20px 0; font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem; font-weight: 600; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; transition: color 0.2s;
+}
+.faq-question:hover { color: #cc2233; }
+.faq-question.open { color: #cc2233; }
+.faq-icon {
+  font-size: 1.2rem; transition: transform 0.3s;
+  color: #cc2233; flex-shrink: 0;
+}
+.faq-question.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.3s;
+  font-size: 0.92rem; line-height: 1.8;
+  color: rgba(240,232,234,0.65);
+}
+.faq-answer.open { max-height: 300px; padding-bottom: 20px; }
+
+
+#cookieBanner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 999;
+  background: #0e0404;
+  border-top: 2px solid rgba(204,34,51,0.4);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  transform: translateY(100%);
+  transition: transform 0.4s ease;
+}
+#cookieBanner.show { transform: translateY(0); }
+.cookie-text {
+  font-size: 0.84rem;
+  color: rgba(240,232,234,0.75);
+  line-height: 1.6;
+  flex: 1;
+  min-width: 200px;
+}
+.cookie-text a {
+  color: #cc2233;
+  text-decoration: underline;
+}
+.cookie-btns { display: flex; gap: 10px; flex-shrink: 0; }
+.cookie-accept {
+  background: #cc2233; color: white;
+  border: none; padding: 10px 22px;
+  border-radius: 4px; font-family: inherit;
+  font-size: 0.82rem; font-weight: 700;
+  cursor: pointer; letter-spacing: 0.06em;
+}
+.cookie-accept:hover { background: #e03348; }
+.cookie-decline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(240,232,234,0.5);
+  padding: 10px 18px; border-radius: 4px;
+  font-family: inherit; font-size: 0.82rem;
+  cursor: pointer;
+}
+.cookie-decline:hover { border-color: rgba(255,255,255,0.4); color: rgba(240,232,234,0.8); }
+@media (max-width: 600px) {
+  #cookieBanner { padding: 14px 20px; }
+  .cookie-btns { width: 100%; }
+  .cookie-accept, .cookie-decline { flex: 1; text-align: center; }
+}
 
 </style>
 </head>
 <body>
 
 <!-- NAV -->
+
+<!-- ANNOUNCEMENT BAR -->
+<div id="announcementBar">
+  🚚 <strong>Nemokamas pristatymas</strong> užsakymams virš 50€
+  <span>·</span>
+  🎁 Pirmam užsakymui <strong>-15%</strong> su kodu <strong>PIRMAS15</strong>
+  <span>·</span>
+  ⚡ Išsiuntimas tą pačią dieną iki 14:00
+  <button class="announcement-close" onclick="(function(){
+  var bar = document.getElementById('announcementBar');
+  if(bar) bar.classList.add('hidden');
+  var nav = document.getElementById('navbar');
+  if(nav) nav.style.top='0';
+})()">✕</button>
+</div>
+
 <nav id="navbar">
   <a href="#" class="nav-logo">Dūmo <span>Pilvas</span></a>
   <ul class="nav-links">
@@ -2650,6 +2913,10 @@ nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
       <h2 class="section-heading display">Visi priedai –<br>išbandyti <em>ugnimi</em>.</h2>
       <p class="section-body serif">Tik tai, ką naudojame patys. Pristatome tą pačią dieną – prekės jau Lietuvoje.</p>
     </div>
+    <div class="shop-search-wrap" style="max-width:400px;margin-bottom:20px;position:relative;">
+      <input class="shop-search-input" id="shopSearch" placeholder="🔍 Ieškoti prekių..." oninput="searchShop(this.value)" style="width:100%;padding:12px 44px 12px 16px;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.12);border-radius:4px;color:#f0e8ea;font-family:inherit;font-size:0.9rem;outline:none;">
+      <button id="shopSearchClear" onclick="clearShopSearch()" style="display:none;position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(240,232,234,0.5);cursor:pointer;font-size:1rem;">✕</button>
+    </div>
     <div class="shop-filters reveal" style="margin-bottom:32px;display:flex;flex-wrap:wrap;gap:8px;">
       <button class="filter-btn active" data-shop-filter="all">Visi</button>
       <button class="filter-btn" data-shop-filter="cold">❄️ Šaltam rūkymui</button>
@@ -2689,6 +2956,82 @@ nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
 </section>
 
 <!-- ====== FOOTER ====== -->
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label" style="color:#cc2233">
+      <span style="display:inline-block;width:28px;height:1px;background:#cc2233;margin-right:10px;vertical-align:middle;"></span>
+      DUK
+    </div>
+    <h2 class="section-heading">Dažniausiai <em style="color:#cc2233;font-style:italic">užduodami</em> klausimai</h2>
+
+    <div style="max-width:720px;margin-top:40px;">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Kiek laiko užtrunka pristatymas?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Užsakymus išsiunčiame tą pačią dieną, jei užsakymas pateiktas iki 14:00. Pristatymas į paštomatą užtrunka <strong>2–3 darbo dienas</strong>, kurjeriu – <strong>1–2 darbo dienas</strong>. Gavę siuntą, atsiųsime sekimo numerį.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Kaip apmokėti už užsakymą?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Šiuo metu priimame apmokėjimą pavedimu arba grynaisiais atsiimant. Pateikus užsakymą susisieksime su jumis ir sutarsime dėl apmokėjimo. Greitu metu pridėsime ir kortele mokėjimo galimybę.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Ar galiu grąžinti prekę?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Taip! Pagal Lietuvos įstatymus turite <strong>14 dienų</strong> teisę grąžinti prekę be jokio paaiškinimo. Prekė turi būti originalioje pakuotėje ir nenaudota. Grąžinimo išlaidas padengia pirkėjas, išskyrus atvejus kai prekė yra defektuota.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Ar pristatote į visą Lietuvą?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Taip, pristatome į visą Lietuvą per <strong>Lietuvos paštą</strong>, <strong>Omniva</strong> ir <strong>DPD</strong> paštomatus bei kurjerių tarnybas. Nemokamas pristatymas užsakymams virš <strong>50€</strong>.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Kaip naudoti kupono kodą?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Pridėkite norimas prekes į krepšelį. Atidarykite krepšelį – rasite lauką <strong>„Kupono kodas"</strong>. Įveskite kodą <strong>PIRMAS15</strong> ir spauskite „Taikyti". Nuolaida bus pritaikyta automatiškai prieš pateikiant užsakymą.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Kokios medienos rekomenduojate pradedantiesiems?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Pradedantiesiems rekomenduojame <strong>alksnio</strong> arba <strong>obelies</strong> medienos drožles ar kaladėles. Jos suteikia švelnų, malonų aromatą ir puikiai tinka žuviai, paukštienai bei daržovėms. Ąžuolas ir bukas – intensyvesniam skoniui, tinkamesnis mėsai.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <footer id="footer">
   <div class="footer-inner">
     <div class="footer-top">
@@ -2697,7 +3040,7 @@ nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
         <p class="footer-slogan">Kad grilis niekad neatvėstų.<br>Nuo pirmo dūmo iki tobulo rezultato.</p>
         <div class="footer-contact">
           <a href="tel:+37060000000">📞 +370 600 00000</a>
-          <a href="/cdn-cgi/l/email-protection#ea8e9f87859a83869c8b99aa8d878b8386c4898587">✉️ <span class="__cf_email__" data-cfemail="385c4d55574851544e594b785f55595154165b5755">[email&#160;protected]</span></a>
+          <a href="/cdn-cgi/l/email-protection#d5b1a0b8baa5bcb9a3b4a695b2b8b4bcb9fbb6bab8">✉️ <span class="__cf_email__" data-cfemail="a1c5d4ccced1c8cdd7c0d2e1c6ccc0c8cd8fc2cecc">[email&#160;protected]</span></a>
         </div>
         <div class="social-links" style="margin-top:20px">
           <a href="#" class="social-link" title="Facebook">f</a>
@@ -2750,6 +3093,16 @@ nav.scrolled { border-bottom: 2px solid #cc2233 !important; }
       <span class="cart-total-val" id="cartTotal">0,00 €</span>
     </div>
     <div id="deliveryProgress" style="margin:10px 0 14px;"></div>
+    <div id="couponSection" style="margin:8px 0 10px;padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:4px;">
+      <div id="couponActive" style="display:none;align-items:center;justify-content:space-between;gap:8px;">
+        <span id="couponActiveLabel" style="font-size:0.82rem;color:#6adb80;font-weight:700;"></span>
+        <button onclick="removeCoupon()" style="background:none;border:none;color:rgba(240,232,234,0.4);cursor:pointer;font-size:0.85rem;">✕</button>
+      </div>
+      <div id="couponInput" style="display:flex;gap:6px;">
+        <input id="couponCode" placeholder="Kupono kodas..." style="flex:1;font-size:0.82rem;padding:8px 10px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#f0e8ea;font-family:inherit;" onkeydown="if(event.key==='Enter')applyCouponFromInput()">
+        <button onclick="applyCouponFromInput()" style="padding:8px 14px;background:#cc2233;color:white;border:none;border-radius:3px;font-size:0.78rem;font-weight:700;cursor:pointer;">Taikyti</button>
+      </div>
+    </div>
     <div id="cartFooterBtns">
       <button class="cart-checkout-btn" onclick="openOrderModal('web')">Pateikti užsakymą →</button>
       <button class="cart-msg-btn" onclick="openOrderModal('message')">💬 Užsakyti per žinutę</button>
@@ -2922,6 +3275,14 @@ let revealObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 let cart = JSON.parse(localStorage.getItem('dp_cart') || '[]');
 
+// ── Coupon system ──
+var _activeCoupon = null;
+var _coupons = { 'PIRMAS15': { discount: 0.15, label: '15% nuolaida pirmam užsakymui' } };
+function cartTotalWithDiscount() {
+  var base = cartTotal();
+  return _activeCoupon ? base * (1 - _activeCoupon.discount) : base;
+}
+
 const _defaultProducts = [
   { id:1, name:'Universalus dūmų generatorius (spiralė)', price:0, cat:'cold', badge:'best', img:'Šaltojo dūmo spiralė.jpg', desc:'Aukščiausios 304 nerūdijančio plieno kokybė. Dviguba paskirtis (2-in-1): šaltas ir karštas rūkymas. Stabilus smilkimas iki 10–12 valandų. Komplekte valymo šepetėlis. ISO9001 sertifikatas.', oldPrice:null, stock:15, tags:['Šaltas rūkymas','Spiralė','Generatorius','304 plienas'] },
   { id:2, name:'Premium medžio dulkės šaltam rūkymui', price:0, cat:'cold', badge:'new', img:'Šaltojo rūkymo dulkės.jpg', desc:'Iš Estijos miškų. Drėgmė tik 5% – idealiai tinka šaltam rūkymui. Frakcija 1–3 mm. SGS sertifikuota. 2L Zip-lock pakuotė. Suteikia gintarinį atspalvį ir nepamirštamą aromatą.', oldPrice:null, stock:42, tags:['Šaltas rūkymas','Dulkės','Estija','SGS'] },
@@ -2966,24 +3327,11 @@ function stockBadgeHTML(stock) {
   return '';
 }
 
-var _cardQtys = {};
-function cardQtyChange(id, delta) {
-  if (!_cardQtys[id]) _cardQtys[id] = 1;
-  _cardQtys[id] = Math.max(1, _cardQtys[id] + delta);
-  const el = document.getElementById('card-qty-' + id);
-  if (el) el.textContent = _cardQtys[id];
-}
-function addToCartQty(id) {
-  const qty = _cardQtys[id] || 1;
-  for (let i = 0; i < qty; i++) addToCart(id, i < qty - 1);
-  _cardQtys[id] = 1;
-  const el = document.getElementById('card-qty-' + id);
-  if (el) el.textContent = '1';
-}
-
 function renderShop(filter='all') {
   const grid = document.getElementById('shopGrid');
-  const visible = filter === 'all' ? products : products.filter(p => p.cat === filter);
+  let visible = filter === 'all' ? products : products.filter(p => p.cat === filter);
+  // Sort: bestsellers first
+  visible = [...visible].sort((a,b) => (b.badge==='best'?1:0) - (a.badge==='best'?1:0));
   if (!visible.length) { grid.innerHTML = '<p style="color:rgba(250,245,237,0.4);padding:32px 0">Prekių šioje kategorijoje dar nėra.</p>'; return; }
   grid.innerHTML = visible.map(p => `
     <div class="product-card reveal" onclick="openProductModal(${p.id})">
@@ -3012,6 +3360,7 @@ function renderShop(filter='all') {
             <button class="add-to-cart-btn" id="btn-${p.id}" onclick="event.stopPropagation();addToCartQty(${p.id})" style="flex:1;" ${(p.stock??99)===0?'disabled':''}>
               ${(p.stock??99)===0?'<span>✕</span> Nėra':'<span>🛒</span> Į krepšelį'}
             </button>
+            <button onclick="event.stopPropagation();toggleCompare(${p.id})" title="Palyginti" style="width:34px;height:34px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;border-radius:4px;cursor:pointer;font-size:0.85rem;flex-shrink:0;" id="cmp-${p.id}">⚖️</button>
           </div>
         </div>
       </div>
@@ -3164,7 +3513,13 @@ function updateCartUI() {
   const mcc = document.getElementById('mobileCartCount');
   if (mcc) mcc.textContent = count;
   const total = cartTotal();
-  document.getElementById('cartTotal').textContent = total.toFixed(2).replace('.', ',') + ' €';
+  const discounted = cartTotalWithDiscount();
+  const totalEl = document.getElementById('cartTotal');
+  if (_activeCoupon && discounted < total) {
+    totalEl.innerHTML = '<span style="text-decoration:line-through;opacity:0.4;font-size:0.85rem">' + total.toFixed(2).replace('.',',') + ' €</span> <span style="color:#6adb80;font-weight:900">' + discounted.toFixed(2).replace('.',',') + ' €</span>';
+  } else {
+    totalEl.textContent = total.toFixed(2).replace('.', ',') + ' €';
+  }
 
   // Delivery progress bar
   const FREE_DELIVERY = 50;
@@ -3407,7 +3762,7 @@ function submitOrder() {
   if (!valid) { showToast('Prašome užpildyti visus privalomus laukus', '⚠️'); return; }
 
   const FREE_DELIVERY = 50;
-  const total = cartTotal();
+  const total = cartTotalWithDiscount();
   const deliveryCost = total >= FREE_DELIVERY ? 'NEMOKAMA' : (isLocker ? '2.99€' : '4.99€');
   const methodLabel = isLocker ? `📦 Pašto punktas / Paštomatas` : `🚚 Kurjeris į duris`;
 
@@ -3431,14 +3786,14 @@ function submitOrder() {
   });
 
   cart = [];
+  _activeCoupon = null;
   saveAll();
   updateCartUI();
   renderShop();
 
   // Sync to Google Sheets if configured
   if (sheetsUrl) syncOrderToSheets(order);
-
-  // El. laiškas siunčiamas automatiškai per Apps Script
+  // El. laiškas siunčiamas per Apps Script
 
   document.getElementById('orderModalContent').innerHTML = `
     <div class="order-success">
@@ -3951,9 +4306,8 @@ document.querySelectorAll('[data-shop-filter]').forEach(btn => {
 // ================== INIT ==================
 renderShop();
 updateCartUI();
-// Secret admin
-if(window.location.hash==='#Mf0g6qpqY91X4F59asA-4GYlSiZf3eVw8zUJuxjjKtg'){document.getElementById('adminDrawer').classList.add('open');renderAdminProducts&&renderAdminProducts();renderAdminOrders&&renderAdminOrders();updateSheetsUI&&updateSheetsUI();}
-window.addEventListener('hashchange',function(){if(window.location.hash==='#Mf0g6qpqY91X4F59asA-4GYlSiZf3eVw8zUJuxjjKtg'){document.getElementById('adminDrawer').classList.add('open');renderAdminProducts&&renderAdminProducts();renderAdminOrders&&renderAdminOrders();updateSheetsUI&&updateSheetsUI();}});
+if(window.location.hash==='#Mf0g6qpqY91X4F59asA-4GYlSiZf3eVw8zUJuxjjKtg'){document.getElementById('adminDrawer').classList.add('open');}
+window.addEventListener('hashchange',function(){if(window.location.hash==='#Mf0g6qpqY91X4F59asA-4GYlSiZf3eVw8zUJuxjjKtg'){document.getElementById('adminDrawer').classList.add('open');}});
 // Init sheets URL from localStorage
 if (sheetsUrl) {
   const urlInput = document.getElementById('sheets-url');
@@ -4948,3 +5302,250 @@ function closeModalOutside(e) {
   window.addEventListener('scroll', function(){
     if (window.scrollY > 400) {
       btn.style.opacity = '1'
+      btn.style.pointerEvents = 'auto';
+    } else {
+      btn.style.opacity = '0';
+      btn.style.pointerEvents = 'none';
+    }
+  });
+})();
+</script>
+
+
+<!-- PROMO BANNER -->
+<div id="promoBanner" style="position:fixed;bottom:28px;left:28px;z-index:500;max-width:300px;background:#1a0808;border:1px solid rgba(204,34,51,0.5);border-left:4px solid #cc2233;border-radius:6px;padding:16px 20px 14px;box-shadow:0 8px 32px rgba(0,0,0,0.5);">
+  <button class="promo-close" onclick="closePromoBanner()">✕</button>
+  <div class="promo-tag">Specialus pasiūlymas</div>
+  <div class="promo-text">Pirmam užsakymui – <strong style="color:#f0e8ea;">15% nuolaida</strong>!<br>Nepraleisk progos 🔥</div>
+  <div class="promo-code-wrap" onclick="copyPromoCode()">
+    <span class="promo-code-val">PIRMAS15</span>
+    <span class="promo-copy-hint" id="promoCopyHint">📋 kopijuoti</span>
+  </div>
+  <div class="promo-note">Įvesk kodą krepšelyje prieš užsakant</div>
+</div>
+
+<script>
+// ── Qty on cards ──
+var _cardQtys = {};
+function cardQtyChange(id, delta) {
+  if (!_cardQtys[id]) _cardQtys[id] = 1;
+  _cardQtys[id] = Math.max(1, _cardQtys[id] + delta);
+  var el = document.getElementById('card-qty-' + id);
+  if (el) el.textContent = _cardQtys[id];
+}
+function addToCartQty(id) {
+  var qty = _cardQtys[id] || 1;
+  for (var i = 0; i < qty; i++) addToCart(id, i < qty - 1);
+  _cardQtys[id] = 1;
+  var el = document.getElementById('card-qty-' + id);
+  if (el) el.textContent = '1';
+}
+
+// (coupon vars defined earlier)
+function applyCoupon(code) {
+  var c = _coupons[code.toUpperCase().trim()];
+  if (!c) { showToast('Neteisingas kupono kodas', '❌'); return false; }
+  _activeCoupon = Object.assign({}, c, { code: code.toUpperCase().trim() });
+  showToast('Kupono kodas pritaikytas! -' + Math.round(c.discount*100) + '%', '🎉');
+  updateCartUI();
+  return true;
+}
+function applyCouponFromInput() {
+  var code = document.getElementById('couponCode') ? document.getElementById('couponCode').value : '';
+  if (!code.trim()) { showToast('Įveskite kupono kodą', '⚠️'); return; }
+  if (applyCoupon(code)) {
+    var a = document.getElementById('couponActive');
+    var inp = document.getElementById('couponInput');
+    var lbl = document.getElementById('couponActiveLabel');
+    if (a) a.style.display = 'flex';
+    if (inp) inp.style.display = 'none';
+    if (lbl) lbl.textContent = '🎉 ' + _activeCoupon.label;
+  }
+}
+function removeCoupon() {
+  _activeCoupon = null;
+  var a = document.getElementById('couponActive');
+  var inp = document.getElementById('couponInput');
+  var c = document.getElementById('couponCode');
+  if (a) a.style.display = 'none';
+  if (inp) inp.style.display = 'flex';
+  if (c) c.value = '';
+  showToast('Kupono kodas pašalintas', '🗑️');
+  updateCartUI();
+}
+
+// ── Promo banner ──
+function closePromoBanner() {
+  var b = document.getElementById('promoBanner');
+  if (b) b.style.display = 'none';
+  sessionStorage.setItem('promoClosed','1');
+}
+function copyPromoCode() {
+  navigator.clipboard.writeText('PIRMAS15').then(function(){
+    var h = document.getElementById('promoCopyHint');
+    if (h) { h.textContent = '✅ nukopijuota!'; h.style.color='#6adb80'; }
+    showToast('Kodas PIRMAS15 nukopijuotas! 🎉','🎉');
+    setTimeout(function(){ var h2=document.getElementById('promoCopyHint'); if(h2){h2.textContent='📋 kopijuoti';h2.style.color='';} },2000);
+  }).catch(function(){ showToast('Kodas: PIRMAS15','🎉'); });
+}
+
+// ── Sheets URL ──
+var sheetsUrl = localStorage.getItem('dp_sheets_url')||'';
+function syncOrderToSheets(order){if(!sheetsUrl)return;try{fetch(sheetsUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'addOrder',order})});}catch(e){console.warn(e);}}
+</script>
+
+<!-- COMPARE BAR -->
+<div id="compareBar">
+  <span class="compare-count" id="compareCount">0/3 prekės pasirinktos</span>
+  <div id="compareItems" style="display:flex;gap:8px;flex-wrap:wrap;flex:1;"></div>
+  <button class="compare-clear" onclick="clearCompare()">Išvalyti</button>
+  <button class="compare-btn" onclick="openCompareModal()">⚖️ Palyginti</button>
+</div>
+
+<!-- COMPARE MODAL -->
+<div id="compareModal" onclick="if(event.target===this)closeCompareModal()">
+  <div class="compare-modal-inner">
+    <button class="compare-modal-close" onclick="closeCompareModal()">✕</button>
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:4px;">⚖️ Prekių palyginimas</h2>
+    <p style="font-size:0.82rem;color:rgba(240,232,234,0.4);margin-bottom:0;">Pasirinktos prekės palyginamos pagal pagrindinius parametrus</p>
+    <div id="compareTableWrap"></div>
+  </div>
+</div>
+
+<script>
+// ══ SEARCH ══
+function searchShop(val) {
+  var clear = document.getElementById('shopSearchClear');
+  var icon  = document.getElementById('shopSearchIcon');
+  if (clear) clear.style.display = val ? 'block' : 'none';
+  if (icon)  icon.style.display  = val ? 'none'  : 'block';
+  if (!val.trim()) { renderShop(); return; }
+  var q = val.toLowerCase();
+  var filtered = products.filter(function(p) {
+    return p.name.toLowerCase().includes(q) ||
+           (p.desc && p.desc.toLowerCase().includes(q)) ||
+           (p.tags && p.tags.join(' ').toLowerCase().includes(q));
+  });
+  var grid = document.getElementById('shopGrid');
+  if (!filtered.length) {
+    grid.innerHTML = '<p style="color:rgba(240,232,234,0.4);padding:32px 0">Prekių pagal paiešką nerasta.</p>';
+    return;
+  }
+  grid.innerHTML = filtered.map(function(p) {
+    return '<div class="product-card reveal visible" onclick="openProductModal(' + p.id + ')" style="cursor:pointer"><div class="product-img-wrap"><img src="' + p.img + '" alt="' + p.name + '" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80'"></div><div class="product-body"><div class="product-cat">' + (p.cat==='cold'?'❄️ Šaltam':'p.cat'==='hot'?'🔥 Karštam':'🛠️ Įrankiai') + '</div><div class="product-name">' + p.name + '</div><div class="product-price"><span class="price-current" style="font-family:Space Mono,monospace">' + p.price.toFixed(2).replace('.',',') + ' €</span></div></div></div>';
+  }).join('');
+}
+function clearShopSearch() {
+  var inp = document.getElementById('shopSearch');
+  if (inp) inp.value = '';
+  searchShop('');
+}
+
+// ══ FAQ ══
+function toggleFaq(btn) {
+  var answer = btn.nextElementSibling;
+  var isOpen = btn.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-question').forEach(function(b) {
+    b.classList.remove('open');
+    b.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    btn.classList.add('open');
+    answer.classList.add('open');
+  }
+}
+
+// ══ COMPARE ══
+var _compareList = [];
+function toggleCompare(id) {
+  var p = products.find(function(x){return x.id===id;});
+  if (!p) return;
+  var idx = _compareList.findIndex(function(x){return x.id===id;});
+  if (idx > -1) {
+    _compareList.splice(idx, 1);
+  } else {
+    if (_compareList.length >= 3) { showToast('Galima palyginti iki 3 prekių', '⚠️'); return; }
+    _compareList.push(p);
+  }
+  updateCompareBar();
+}
+function updateCompareBar() {
+  var bar   = document.getElementById('compareBar');
+  var count = document.getElementById('compareCount');
+  var items = document.getElementById('compareItems');
+  if (!bar) return;
+  if (_compareList.length === 0) {
+    bar.classList.remove('show');
+    return;
+  }
+  bar.classList.add('show');
+  if (count) count.textContent = _compareList.length + '/3 prekių pasirinkta';
+  if (items) items.innerHTML = _compareList.map(function(p) {
+    return '<div class="compare-item"><span style="font-size:0.8rem;max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + p.name + '</span><button class="compare-item-remove" onclick="toggleCompare(' + p.id + ')">✕</button></div>';
+  }).join('');
+}
+function clearCompare() {
+  _compareList = [];
+  updateCompareBar();
+}
+function openCompareModal() {
+  if (_compareList.length < 2) { showToast('Pasirinkite bent 2 prekes palyginimui', '⚠️'); return; }
+  var wrap = document.getElementById('compareTableWrap');
+  var rows = [
+    ['Kategorija', function(p){return p.cat==='cold'?'❄️ Šaltam rūkymui':p.cat==='hot'?'🔥 Karštam rūkymui':'🛠️ Įrankiai';}],
+    ['Kaina', function(p){return '<span class="compare-prod-price">' + p.price.toFixed(2).replace('.',',') + ' €</span>';}],
+    ['Likutis', function(p){return (p.stock||0) > 0 ? '✅ Yra (' + p.stock + ' vnt.)' : '❌ Išparduota';}],
+    ['Aprašymas', function(p){return '<span class="compare-prod-desc">' + (p.desc||'—') + '</span>';}],
+  ];
+  var html = '<table class="compare-table"><thead><tr><th>Parametras</th>' +
+    _compareList.map(function(p){return '<th><div class="compare-prod-name">' + p.name + '</div><div class="compare-prod-cat">' + (p.cat==='cold'?'❄️ Šaltam':p.cat==='hot'?'🔥 Karštam':'🛠️ Įrankiai') + '</div></th>';}).join('') +
+    '</tr></thead><tbody>' +
+    rows.map(function(r){
+      return '<tr><td style="font-weight:600;color:rgba(240,232,234,0.6);font-size:0.82rem">' + r[0] + '</td>' +
+        _compareList.map(function(p){return '<td>' + r[1](p) + '</td>';}).join('') + '</tr>';
+    }).join('') +
+    '</tbody></table>';
+  if (wrap) wrap.innerHTML = html;
+  document.getElementById('compareModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCompareModal() {
+  document.getElementById('compareModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+
+<!-- COOKIE BANNER -->
+<div id="cookieBanner">
+  <div class="cookie-text">
+    🍪 Ši svetainė naudoja būtinus slapukus tinkamam veikimui užtikrinti. Jūsų užsakymo duomenys (vardas, tel. nr., el. paštas) naudojami <strong>tik užsakymui įvykdyti</strong> ir nėra perduodami trečiosioms šalims.
+    <a href="privacy.html" target="_blank">Privatumo politika</a>
+  </div>
+  <div class="cookie-btns">
+    <button class="cookie-decline" onclick="cookieDecline()">Tik būtini</button>
+    <button class="cookie-accept" onclick="cookieAccept()">✓ Sutinku</button>
+  </div>
+</div>
+
+<script>
+// ══ COOKIE BANNER ══
+(function() {
+  if (!localStorage.getItem('dp_cookie_consent')) {
+    var b = document.getElementById('cookieBanner');
+    if (b) b.classList.add('show');
+  }
+})();
+function cookieAccept() {
+  localStorage.setItem('dp_cookie_consent', 'accepted');
+  var b = document.getElementById('cookieBanner');
+  if (b) { b.style.transform = 'translateY(100%)'; setTimeout(function(){ b.style.display='none'; }, 400); }
+}
+function cookieDecline() {
+  localStorage.setItem('dp_cookie_consent', 'essential');
+  var b = document.getElementById('cookieBanner');
+  if (b) { b.style.transform = 'translateY(100%)'; setTimeout(function(){ b.style.display='none'; }, 400); }
+}
+</script>
+</body>
+</html>
