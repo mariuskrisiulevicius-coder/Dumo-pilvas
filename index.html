@@ -4269,6 +4269,16 @@ document.querySelectorAll('[data-shop-filter]').forEach(btn => {
 });
 
 // ================== INIT ==================
+// Clear old cached data on version change
+(function() {
+  var ver = localStorage.getItem('dp_version');
+  if (ver !== 'v3') {
+    var sheetsBackup = localStorage.getItem('dp_sheets_url');
+    localStorage.clear();
+    if (sheetsBackup) localStorage.setItem('dp_sheets_url', sheetsBackup);
+    localStorage.setItem('dp_version', 'v3');
+  }
+})();
 
 // Auto-sync products from Google Sheets on page load
 (function autoSyncProducts() {
@@ -5383,7 +5393,6 @@ function removeCoupon() {
 function closePromo() {
   var b = document.getElementById('promoBanner');
   if (b) b.style.display = 'none';
-}
   sessionStorage.setItem('promoClosed','1');
 }
 function copyPromoCode() {
@@ -5460,7 +5469,15 @@ function searchShop(val) {
     return;
   }
   grid.innerHTML = filtered.map(function(p) {
-    return '<div class="product-card reveal visible" onclick="openProductModal(' + p.id + ')" style="cursor:pointer"><div class="product-img-wrap"><img src="' + p.img + '" alt="' + p.name + '" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80'"></div><div class="product-body"><div class="product-cat">' + (p.cat==='cold'?'❄️ Šaltam':p.cat==='hot'?'🔥 Karštam':'🛠️ Įrankiai') + '</div><div class="product-name">' + p.name + '</div><div class="product-price"><span class="price-current" style="font-family:Space Mono,monospace">' + p.price.toFixed(2).replace('.',',') + ' €</span></div></div></div>';
+    var fallback = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80';
+    var imgSrc = p.img ? 'images/' + p.img : fallback;
+    var cat = p.cat==='cold' ? '❄️ Šaltam' : p.cat==='hot' ? '🔥 Karštam' : '🛠️ Įrankiai';
+    return '<div class="product-card reveal visible" onclick="openProductModal(' + p.id + ')" style="cursor:pointer">' +
+      '<div class="product-img-wrap"><img src="' + imgSrc + '" alt="' + p.name + '"></div>' +
+      '<div class="product-body"><div class="product-cat">' + cat + '</div>' +
+      '<div class="product-name">' + p.name + '</div>' +
+      '<div class="product-price"><span class="price-current" style="font-family:Space Mono,monospace">' + p.price.toFixed(2).replace('.',',') + ' €</span></div>' +
+      '</div></div>';
   }).join('');
 }
 function clearShopSearch() {
