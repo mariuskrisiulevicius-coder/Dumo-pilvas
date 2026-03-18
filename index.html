@@ -2899,7 +2899,7 @@ const _savedProducts = localStorage.getItem('dp_products');
 let products = _savedProducts ? JSON.parse(_savedProducts) : _defaultProducts;
 let orders = JSON.parse(localStorage.getItem('dp_orders') || '[]');
 let nextOrderId = orders.length ? Math.max(...orders.map(o=>o.id)) + 1 : 1001;
-let sheetsUrl = localStorage.getItem('dp_sheets_url') || 'https://script.google.com/macros/s/AKfycbyR7Woa9LHtif7-Z87kJ0O7bu73Fo6xKmA_kQfp8b6RQj4clnX29C-P4MYIN5S_1fnW/exec';
+let sheetsUrl = localStorage.getItem('dp_sheets_url') || 'https://script.google.com/macros/s/AKfycbwd7XLV3ojBv-AJRCOBBcVR3cYSbutpbtpFTT6Kz8dNjm9Y1m5cIuwUIr6oIgwHK-sV/exec';
 let uploadedImgsData = [null,null,null]; // base64 from file uploads
 
 function saveAll() {
@@ -3369,9 +3369,6 @@ function submitOrder() {
   updateCartUI();
   renderShop();
   window.scrollTo(0,0);
-
-  // Sync to Google Sheets if configured
-  if (sheetsUrl) syncOrderToSheets(order);
 
   // Send via Apps Script (automatic emails to owner and client)
   if (sheetsUrl) {
@@ -3894,7 +3891,7 @@ document.querySelectorAll('[data-shop-filter]').forEach(btn => {
 // ================== INIT ==================
 // Auto-sync from Google Sheets
 (function() {
-  var url = localStorage.getItem('dp_sheets_url') || 'https://script.google.com/macros/s/AKfycbyR7Woa9LHtif7-Z87kJ0O7bu73Fo6xKmA_kQfp8b6RQj4clnX29C-P4MYIN5S_1fnW/exec';
+  var url = localStorage.getItem('dp_sheets_url') || 'https://script.google.com/macros/s/AKfycbwd7XLV3ojBv-AJRCOBBcVR3cYSbutpbtpFTT6Kz8dNjm9Y1m5cIuwUIr6oIgwHK-sV/exec';
   if (!url) return;
   fetch(url + '?action=getProducts')
     .then(function(r) { return r.json(); })
