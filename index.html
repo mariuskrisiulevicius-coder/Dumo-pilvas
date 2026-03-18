@@ -3531,20 +3531,6 @@ async function syncFromSheets() {
   }
 }
 
-async function syncOrderToSheets(order) {
-  if (!sheetsUrl) return;
-  try {
-    await fetch(sheetsUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ action: 'addOrder', order })
-    });
-    const now = new Date().toLocaleString('lt-LT');
-    localStorage.setItem('dp_last_sync', now);
-    const syncEl = document.getElementById('sheetsLastSync');
-    if (syncEl) syncEl.innerHTML = `✅ Paskutinė sinchronizacija: ${now}`;
-  } catch(e) { console.warn('Sheets sync failed', e); }
 }
 
 function renderStockTable() {
