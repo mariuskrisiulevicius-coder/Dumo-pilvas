@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<!-- v3.1 -->
 <html lang="lt">
 <head>
-<script>if(history.scrollRestoration)history.scrollRestoration="manual";</script>
+<script>if(history.scrollRestoration)history.scrollRestoration="manual";window.scrollTo(0,0);</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pilvo Dūmas – Tikra Rūkykla Tavo Kieme</title>
@@ -1664,8 +1663,31 @@ textarea.form-input { resize: vertical; min-height: 90px; }
   #reviewsGrid { grid-template-columns: 1fr !important; }
   .recipe-search-wrap { max-width: 100%; }
 }
+#ckBanner{position:fixed;bottom:0;left:0;right:0;background:#0e0404;border-top:3px solid #8B1A2E;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;z-index:9999;}
 
-#ckBanner { position:fixed;bottom:0;left:0;right:0;background:#0e0404;border-top:3px solid #8B1A2E;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;z-index:9999; }
+.variant-btn {
+  padding: 8px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,255,255,0.15);
+  color: var(--cream);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.variant-btn:hover { border-color: #8B1A2E; color: #f0e8ea; }
+.variant-btn.active { background: #8B1A2E; border-color: #8B1A2E; color: white; }
+.variant-btn.out { opacity: 0.4; cursor: not-allowed; }
+.group-modal-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  transition: opacity 0.3s;
+}
 
 </style>
 </head>
@@ -1674,12 +1696,10 @@ textarea.form-input { resize: vertical; min-height: 90px; }
 <!-- NAV -->
 
 <div id="announcementBar" style="background:#8B1A2E;color:#fff;text-align:center;padding:10px 60px;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;position:fixed;top:0;left:0;right:0;z-index:102;">
-  🚚 <strong>Nemokamas pristatymas</strong> virš 50€
-  <span style="margin:0 12px;opacity:0.6">·</span>
-  🎁 Pirmam užsakymui <strong>-15%</strong> su kodu <strong>PIRMAS15</strong>
-  <span style="margin:0 12px;opacity:0.6">·</span>
+  🚚 <strong>Nemokamas pristatymas</strong> virš 50€ &nbsp;·&nbsp;
+  🎁 Pirmam užsakymui <strong>-15%</strong> su kodu <strong>PIRMAS15</strong> &nbsp;·&nbsp;
   ⚡ Išsiuntimas tą pačią dieną iki 14:00
-  <button onclick="document.getElementById('announcementBar').style.display='none';document.getElementById('navbar').style.top='0'" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;color:white;opacity:0.6;cursor:pointer;font-size:1rem;">✕</button>
+  <button onclick="document.getElementById('announcementBar').style.display='none';document.getElementById('navbar').style.top='0'" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;color:white;opacity:0.7;cursor:pointer;font-size:1.1rem;">✕</button>
 </div>
 
 <nav id="navbar">
@@ -2649,7 +2669,7 @@ textarea.form-input { resize: vertical; min-height: 90px; }
         <p class="footer-slogan">Kad grilis niekad neatvėstų.<br>Nuo pirmo dūmo iki tobulo rezultato.</p>
         <div class="footer-contact">
           <a href="tel:+37060000000">📞 +370 600 00000</a>
-          <a href="/cdn-cgi/l/email-protection#aacedfc7c5dac3c6dccbd9eacdc7cbc3c684c9c5c7">✉️ <span class="__cf_email__" data-cfemail="a5c1d0c8cad5ccc9d3c4d6e5c2c8c4ccc98bc6cac8">[email&#160;protected]</span></a>
+          <a href="/cdn-cgi/l/email-protection#8febfae2e0ffe6e3f9eefccfe8e2eee6e3a1ece0e2">✉️ <span class="__cf_email__" data-cfemail="e084958d8f90898c968193a0878d81898cce838f8d">[email&#160;protected]</span></a>
         </div>
         <div class="social-links" style="margin-top:20px">
           <a href="#" class="social-link" title="Facebook">f</a>
@@ -2703,12 +2723,12 @@ textarea.form-input { resize: vertical; min-height: 90px; }
     </div>
     <div id="deliveryProgress" style="margin:10px 0 14px;"></div>
     <div id="couponSection" style="margin:8px 0 10px;padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:4px;">
-      <div id="couponActive" style="display:none;align-items:center;justify-content:space-between;gap:8px;">
+      <div id="couponActive" style="display:none;align-items:center;justify-content:space-between;">
         <span id="couponActiveLabel" style="font-size:0.82rem;color:#6adb80;font-weight:700;"></span>
         <button onclick="removeCoupon()" style="background:none;border:none;color:rgba(240,232,234,0.4);cursor:pointer;">✕</button>
       </div>
       <div id="couponInput" style="display:flex;gap:6px;">
-        <input id="couponCode" placeholder="Kupono kodas..." style="flex:1;font-size:0.82rem;padding:8px 10px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#f0e8ea;font-family:inherit;" onkeydown="if(event.key==='Enter')applyCouponFromInput()">
+        <input id="couponCode" placeholder="Kupono kodas..." onkeydown="if(event.key==='Enter')applyCouponFromInput()" style="flex:1;font-size:0.82rem;padding:8px 10px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#f0e8ea;font-family:inherit;">
         <button onclick="applyCouponFromInput()" style="padding:8px 14px;background:#8B1A2E;color:white;border:none;border-radius:3px;font-size:0.78rem;font-weight:700;cursor:pointer;">Taikyti</button>
       </div>
     </div>
@@ -2930,10 +2950,18 @@ function stockBadgeHTML(stock) {
 
 function renderShop(filter='all') {
   const grid = document.getElementById('shopGrid');
-  const visible = filter === 'all' ? products : products.filter(p => p.cat === filter);
+  let allVisible = filter === 'all' ? products : products.filter(p => p.cat === filter);
+  // Show only first product of each group
+  const seenGroups = new Set();
+  const visible = allVisible.filter(p => {
+    if (!p.grupe) return true;
+    if (seenGroups.has(p.grupe)) return false;
+    seenGroups.add(p.grupe);
+    return true;
+  });
   if (!visible.length) { grid.innerHTML = '<p style="color:rgba(250,245,237,0.4);padding:32px 0">Prekių šioje kategorijoje dar nėra.</p>'; return; }
   grid.innerHTML = visible.map(p => `
-    <div class="product-card reveal" onclick="openProductModal(${p.id})">
+    <div class="product-card reveal" onclick="${p.grupe ? 'openGroupModal(\''+p.grupe+'\')' : 'openProductModal('+p.id+')'}">
       <div class="product-img-wrap">
         <img src="${p.img}" alt="${p.name}" onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&auto=format'">
         <div class="product-badge-wrap">
@@ -3214,7 +3242,7 @@ function openOrderModal(method) {
         <div style="display:flex;flex-direction:column;gap:12px;">
           
           
-          <a href="https://m.me/pilvodumai" target="_blank" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#0084ff;color:white;text-decoration:none;border-radius:3px;font-weight:700;font-size:0.92rem;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''">
+          <a href="https://m.me/dumopilvas" target="_blank" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:#0084ff;color:white;text-decoration:none;border-radius:3px;font-weight:700;font-size:0.92rem;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''">
             <span style="font-size:1.4rem">📘</span> Siųsti per Facebook Messenger
           </a>
           <a href="mailto:mariuskrisiulevicius@gmail.com?subject=Užsakymas&body=${whatsappMsg}" style="display:flex;align-items:center;gap:14px;padding:16px 20px;background:var(--ember);color:white;text-decoration:none;border-radius:3px;font-weight:700;font-size:0.92rem;transition:filter 0.2s;" onmouseover="this.style.filter='brightness(1.1)'" onmouseout="this.style.filter=''">
@@ -3370,16 +3398,18 @@ function submitOrder() {
   saveAll();
   updateCartUI();
   renderShop();
-  window.scrollTo(0,0);
 
-  // Send via Apps Script (automatic emails to owner and client)
+  // Sync to Google Sheets if configured
+  if (sheetsUrl) syncOrderToSheets(order);
+
+  // Send via Apps Script
   if (sheetsUrl) {
     fetch(sheetsUrl, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify({ action: 'addOrder', order: order })
-    }).catch(function(e) { console.warn('Sheets sync failed:', e); });
+    }).catch(function(e) { console.warn('Failed:', e); });
   }
 
   document.getElementById('orderModalContent').innerHTML = `
@@ -3531,6 +3561,22 @@ async function syncFromSheets() {
   } catch(e) {
     showToast('Klaida jungiamtis prie Sheets. Patikrinkite URL.', '❌');
   }
+}
+
+async function syncOrderToSheets(order) {
+  if (!sheetsUrl) return;
+  try {
+    await fetch(sheetsUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ action: 'addOrder', order })
+    });
+    const now = new Date().toLocaleString('lt-LT');
+    localStorage.setItem('dp_last_sync', now);
+    const syncEl = document.getElementById('sheetsLastSync');
+    if (syncEl) syncEl.innerHTML = `✅ Paskutinė sinchronizacija: ${now}`;
+  } catch(e) { console.warn('Sheets sync failed', e); }
 }
 
 function renderStockTable() {
@@ -3876,30 +3922,43 @@ document.querySelectorAll('[data-shop-filter]').forEach(btn => {
 
 // ================== INIT ==================
 // Auto-sync from Google Sheets
-(function() {
+(function autoSync() {
   var url = localStorage.getItem('dp_sheets_url') || 'https://script.google.com/macros/s/AKfycbwd7XLV3ojBv-AJRCOBBcVR3cYSbutpbtpFTT6Kz8dNjm9Y1m5cIuwUIr6oIgwHK-sV/exec';
-  if (!url) return;
   fetch(url + '?action=getProducts')
-    .then(function(r) { return r.json(); })
-    .then(function(data) {
-      if (!data.ok || !data.products) return;
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (!data.ok || !data.products) { renderShop(); updateCartUI(); return; }
+      var raw = data.products;
+      // Save all raw products
       var prods = JSON.parse(localStorage.getItem('dp_products') || '[]');
-      data.products.forEach(function(row) {
+      raw.forEach(function(row){
         var id = parseInt(row['id']);
-        var existing = prods.find(function(x) { return x.id === id; });
+        var existing = prods.find(function(x){ return x.id===id; });
+        var grupe = row['grupe'] ? String(row['grupe']).trim() : '';
         if (existing) {
           existing.price = parseFloat(row['kaina']) || existing.price;
           existing.stock = parseInt(row['likutis']) || existing.stock;
           if (row['nuotrauka']) existing.img = row['nuotrauka'];
+          existing.grupe = grupe;
         } else {
-          prods.push({ id: id, name: row['pavadinimas']||'', price: parseFloat(row['kaina'])||0, stock: parseInt(row['likutis'])||0, cat: row['kategorija']||'tools', img: row['nuotrauka']||'', desc:'', badge:'', tags:[] });
+          prods.push({
+            id: id,
+            name: row['pavadinimas']||'',
+            price: parseFloat(row['kaina'])||0,
+            stock: parseInt(row['likutis'])||0,
+            cat: row['kategorija']||'tools',
+            img: row['nuotrauka']||'',
+            grupe: grupe,
+            desc:'', badge:'', tags:[]
+          });
         }
       });
       localStorage.setItem('dp_products', JSON.stringify(prods));
       products = prods;
       renderShop();
+      updateCartUI();
     })
-    .catch(function() {});
+    .catch(function(){ renderShop(); updateCartUI(); });
 })();
 renderShop();
 updateCartUI();
@@ -4905,7 +4964,6 @@ function closeModalOutside(e) {
   });
 })();
 </script>
-
 <div id="ckBanner">
   <span style="color:rgba(240,232,234,0.85);font-size:0.84rem;flex:1;">🍪 Ši svetainė naudoja būtinus slapukus. Duomenys naudojami tik užsakymui. <a href="privacy.html" target="_blank" style="color:#8B1A2E;">Privatumo politika</a></span>
   <div style="display:flex;gap:10px;">
@@ -4913,17 +4971,117 @@ function closeModalOutside(e) {
     <button onclick="document.getElementById('ckBanner').style.display='none'" style="padding:10px 22px;background:#8B1A2E;color:white;border:none;border-radius:4px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;">✓ Sutinku</button>
   </div>
 </div>
-
-
 <div id="promoBanner" style="position:fixed;bottom:90px;right:20px;z-index:500;background:#1a0808;border:1px solid rgba(139,26,46,0.5);border-left:3px solid #8B1A2E;border-radius:4px;padding:12px 16px;max-width:220px;font-size:0.82rem;">
   <button onclick="document.getElementById('promoBanner').style.display='none'" style="position:absolute;top:6px;right:8px;background:none;border:none;color:rgba(240,232,234,0.4);cursor:pointer;font-size:0.9rem;">✕</button>
   <div style="color:#8B1A2E;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;margin-bottom:6px;">PIRMAS UŽSAKYMAS</div>
   <div style="color:rgba(240,232,234,0.8);margin-bottom:8px;">-15% su kodu:</div>
-  <div style="font-family:'Space Mono',monospace;font-size:1rem;font-weight:700;color:#8B1A2E;background:rgba(139,26,46,0.1);border:1px dashed rgba(139,26,46,0.4);border-radius:3px;padding:6px 10px;text-align:center;cursor:pointer;" onclick="navigator.clipboard.writeText('PIRMAS15').catch(function(){});showToast('Kodas nukopijuotas!','🎉')">PIRMAS15</div>
+  <div onclick="navigator.clipboard.writeText('PIRMAS15').catch(function(){});showToast('Nukopijuota!','🎉')" style="font-family:'Space Mono',monospace;font-size:1rem;font-weight:700;color:#8B1A2E;background:rgba(139,26,46,0.1);border:1px dashed rgba(139,26,46,0.4);border-radius:3px;padding:6px 10px;text-align:center;cursor:pointer;">PIRMAS15</div>
+  <div style="font-size:0.7rem;color:rgba(240,232,234,0.3);margin-top:6px;text-align:center;">Spausk kad nukopijuoti</div>
 </div>
-
 <script>
-// ── Coupon system ──
+// ══ GROUP PRODUCT LOGIC ══
+function getGroupProducts(grupe) {
+  return products.filter(function(p){ return p.grupe && p.grupe === grupe; });
+}
+
+function openGroupModal(grupe) {
+  var members = getGroupProducts(grupe);
+  if (!members.length) return;
+  var first = members[0];
+  
+  // Get group display name (remove variant part)
+  var groupName = first.name.split('–')[0].trim();
+  
+  var variantBtns = members.map(function(p, i) {
+    var rysis = p.name.includes('–') ? p.name.split('–')[1].trim() : p.name;
+    var outClass = p.stock <= 0 ? ' out' : '';
+    return '<button class="variant-btn' + (i===0?' active':'') + outClass + '" ' +
+      'onclick="selectVariant(' + p.id + ',this)" ' +
+      'id="vbtn-' + p.id + '">' + rysis + '</button>';
+  }).join('');
+
+  var imgSrc = first.img ? 'images/' + first.img : 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80';
+
+  var html = '<div style="padding:32px;max-width:560px;margin:0 auto;">' +
+    '<button onclick="closeProductModal()" style="background:none;border:none;color:rgba(240,232,234,0.4);cursor:pointer;font-size:1.2rem;margin-bottom:16px;">← Atgal</button>' +
+    '<img id="groupModalImg" class="group-modal-img" src="' + imgSrc + '" alt="' + groupName + '">' +
+    '<h2 style="font-size:1.6rem;font-weight:800;margin-bottom:8px;">' + groupName + '</h2>' +
+    '<div style="margin-bottom:16px;">' +
+      '<div style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;color:rgba(240,232,234,0.4);margin-bottom:8px;">MEDIENOS RŪŠIS</div>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:8px;">' + variantBtns + '</div>' +
+    '</div>' +
+    '<div style="display:flex;align-items:center;gap:16px;margin-bottom:20px;">' +
+      '<span id="groupModalPrice" style="font-family:Space Mono,monospace;font-size:1.8rem;font-weight:700;color:#8B1A2E;">' + first.price.toFixed(2).replace('.',',') + ' €</span>' +
+      '<span id="groupModalStock" style="font-size:0.82rem;color:rgba(240,232,234,0.4);">' + (first.stock > 0 ? '✅ Yra (' + first.stock + ' vnt.)' : '❌ Išparduota') + '</span>' +
+    '</div>' +
+    '<div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">' +
+      '<button onclick="groupQtyChange(-1)" style="width:36px;height:36px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;font-size:1.2rem;border-radius:4px;cursor:pointer;">−</button>' +
+      '<span id="groupQty" style="font-size:1.1rem;font-weight:700;min-width:32px;text-align:center;">1</span>' +
+      '<button onclick="groupQtyChange(1)" style="width:36px;height:36px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;font-size:1.2rem;border-radius:4px;cursor:pointer;">+</button>' +
+    '</div>' +
+    '<button id="groupAddBtn" onclick="addGroupToCart()" style="width:100%;padding:16px;background:#8B1A2E;color:white;border:none;border-radius:4px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;letter-spacing:0.05em;">🛒 Į krepšelį</button>' +
+  '</div>';
+
+  // Show in product modal
+  var overlay = document.getElementById('productModalOverlay') || document.getElementById('modalOverlay');
+  var modalContent = document.getElementById('productModalContent') || document.getElementById('modalContent');
+  if (overlay && modalContent) {
+    modalContent.innerHTML = html;
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  
+  // Store current selection
+  window._groupSelected = first.id;
+  window._groupQty = 1;
+}
+
+function selectVariant(id, btn) {
+  document.querySelectorAll('.variant-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  window._groupSelected = id;
+  window._groupQty = parseInt(document.getElementById('groupQty').textContent) || 1;
+  
+  var p = products.find(function(x){ return x.id===id; });
+  if (!p) return;
+  
+  // Update image
+  var img = document.getElementById('groupModalImg');
+  if (img) {
+    img.style.opacity = '0';
+    setTimeout(function(){
+      img.src = p.img ? 'images/' + p.img : 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80';
+      img.style.opacity = '1';
+    }, 200);
+  }
+  
+  // Update price and stock
+  var priceEl = document.getElementById('groupModalPrice');
+  var stockEl = document.getElementById('groupModalStock');
+  if (priceEl) priceEl.textContent = p.price.toFixed(2).replace('.',',') + ' €';
+  if (stockEl) stockEl.textContent = p.stock > 0 ? '✅ Yra (' + p.stock + ' vnt.)' : '❌ Išparduota';
+  
+  // Update add button
+  var btn2 = document.getElementById('groupAddBtn');
+  if (btn2) btn2.disabled = p.stock <= 0;
+}
+
+function groupQtyChange(delta) {
+  window._groupQty = Math.max(1, (window._groupQty || 1) + delta);
+  var el = document.getElementById('groupQty');
+  if (el) el.textContent = window._groupQty;
+}
+
+function addGroupToCart() {
+  var id = window._groupSelected;
+  var qty = window._groupQty || 1;
+  if (!id) return;
+  for (var i = 0; i < qty; i++) addToCart(id, i < qty-1);
+  closeProductModal();
+  showToast('Pridėta į krepšelį! 🛒', '✅');
+}
+
+// ══ COUPON SYSTEM ══
 var _activeCoupon = null;
 var _coupons = { 'PIRMAS15': { discount: 0.15, label: '15% nuolaida pirmam užsakymui' } };
 function cartTotalWithDiscount() {
