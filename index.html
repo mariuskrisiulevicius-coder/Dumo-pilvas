@@ -3897,7 +3897,11 @@ fetch('https://script.google.com/macros/s/AKfycbwd7XLV3ojBv-AJRCOBBcVR3cYSbutpbt
     renderShop();
     updateCartUI();
   })
-  .catch(function(){ renderShop(); updateCartUI(); });
+  .catch(function(err){
+    console.error('Sheets fetch failed:', err);
+    renderShop();
+    updateCartUI();
+  });
 // Init sheets URL from localStorage
 if (sheetsUrl) {
   const urlInput = document.getElementById('sheets-url');

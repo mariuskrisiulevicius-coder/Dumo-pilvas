@@ -410,7 +410,7 @@ if (sessionStorage.getItem('dp_admin') === '1') {
 // ========== STATE ==========
 let products = JSON.parse(localStorage.getItem('dp_products') || '[]');
 let orders   = JSON.parse(localStorage.getItem('dp_orders')   || '[]');
-let sheetsUrl = localStorage.getItem('dp_sheets_url') || '';
+let sheetsUrl = localStorage.getItem('dp_sheets_url') || 'https://script.google.com/macros/s/AKfycbwd7XLV3ojBv-AJRCOBBcVR3cYSbutpbtpFTT6Kz8dNjm9Y1m5cIuwUIr6oIgwHK-sV/exec';
 let uploadedImgs = [null, null, null];
 
 function saveProducts() { localStorage.setItem('dp_products', JSON.stringify(products)); }
@@ -686,34 +686,20 @@ async function syncFromSheets() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
     if (!data.ok || !data.products) throw new Error('Blogi duomenys');
-    products = JSON.parse(localStorage.getItem('dp_products') || '[]');
-    let updated = 0;
-    data.products.forEach(row => {
-      const id = parseInt(row['id']);
-      const price = parseFloat(row['kaina']) || 0;
-      const stock = parseInt(row['likutis']) || 0;
-      const name  = row['pavadinimas'] || '';
-      const cat   = row['kategorija'] || 'tools';
-      const img   = row['nuotrauka'] || '';
-      const existing = products.find(x => x.id === id);
-      if (existing) {
-        existing.price = price;
-        existing.stock = stock;
-        existing.name  = name || existing.name;
-        existing.cat   = cat  || existing.cat;
-        if (img) existing.img = img;
-      } else {
-        // Pridėti naują prekę iš Sheets
-        products.push({
-          id, name, price, stock, cat,
-          img: img || '',
-          desc: row['aprasymas'] || '',
-          badge: row['badge'] || '',
-          tags: []
-        });
-      }
-      updated++;
-    });
+    // Import ALL products fresh from Sheets
+    products = data.products.map(row => ({
+      id: parseInt(row['id']),
+      name: row['pavadinimas'] || '',
+      price: parseFloat(row['kaina']) || 0,
+      stock: parseInt(row['likutis']) || 0,
+      cat: row['kategorija'] || 'tools',
+      img: row['nuotrauka'] || '',
+      grupe: row['grupe'] ? String(row['grupe']).trim() : '',
+      desc: row['aprasymas'] || '',
+      badge: row['badge'] || '',
+      tags: []
+    }));
+    let updated = products.length;
     saveProducts();
     renderStockTable();
     const now = new Date().toLocaleString('lt-LT');
