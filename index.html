@@ -1664,22 +1664,13 @@ textarea.form-input { resize: vertical; min-height: 90px; }
   .recipe-search-wrap { max-width: 100%; }
 }
 #ckBanner{position:fixed;bottom:0;left:0;right:0;background:#0e0404;border-top:3px solid #8B1A2E;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;z-index:9999;}
-
-.variant-btn{padding:8px 16px;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;border-radius:4px;cursor:pointer;font-family:inherit;font-size:0.82rem;font-weight:600;transition:all 0.2s;}
-.variant-btn:hover{border-color:#8B1A2E;}
-.variant-btn.active{background:#8B1A2E;border-color:#8B1A2E;color:white;}
-.variant-btn.out{opacity:0.4;cursor:not-allowed;}
-#groupModalImg{width:100%;max-height:280px;object-fit:cover;border-radius:6px;margin-bottom:16px;transition:opacity 0.3s;}
-
+.variant-btn{padding:8px 16px;background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;border-radius:4px;cursor:pointer;font-family:inherit;font-size:0.82rem;font-weight:600;transition:all 0.2s;}.variant-btn:hover{border-color:#8B1A2E;}.variant-btn.active{background:#8B1A2E;border-color:#8B1A2E;color:white;}.variant-btn.out{opacity:0.4;cursor:not-allowed;}#groupModalImg{width:100%;max-height:280px;object-fit:cover;border-radius:6px;margin-bottom:16px;transition:opacity 0.3s;}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<div id="announcementBar" style="background:#8B1A2E;color:#fff;text-align:center;padding:10px 60px;font-size:0.82rem;font-weight:600;position:fixed;top:0;left:0;right:0;z-index:102;">
-  🚚 <strong>Nemokamas pristatymas</strong> virš 50€ &nbsp;·&nbsp; 🎁 Pirmam užsakymui <strong>-15%</strong> su kodu <strong>PIRMAS15</strong> &nbsp;·&nbsp; ⚡ Išsiuntimas tą pačią dieną iki 14:00
-  <button onclick="document.getElementById('announcementBar').style.display='none';document.getElementById('navbar').style.top='0'" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;color:white;opacity:0.7;cursor:pointer;font-size:1.1rem;">✕</button>
-</div>
+<div id="announcementBar" style="background:#8B1A2E;color:#fff;text-align:center;padding:10px 60px;font-size:0.82rem;font-weight:600;position:fixed;top:0;left:0;right:0;z-index:102;">🚚 <strong>Nemokamas pristatymas</strong> virš 50€ &nbsp;·&nbsp; 🎁 <strong>-15%</strong> su kodu <strong>PIRMAS15</strong> &nbsp;·&nbsp; ⚡ Išsiuntimas tą pačią dieną iki 14:00<button onclick="document.getElementById('announcementBar').style.display='none';document.getElementById('navbar').style.top='0'" style="position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;color:white;opacity:0.7;cursor:pointer;font-size:1.1rem;">✕</button></div>
 <nav id="navbar">
   <a href="#" class="nav-logo">Pilvo <span>Dūmas</span></a>
   <ul class="nav-links">
@@ -2647,7 +2638,7 @@ textarea.form-input { resize: vertical; min-height: 90px; }
         <p class="footer-slogan">Kad grilis niekad neatvėstų.<br>Nuo pirmo dūmo iki tobulo rezultato.</p>
         <div class="footer-contact">
           <a href="tel:+37060000000">📞 +370 600 00000</a>
-          <a href="/cdn-cgi/l/email-protection#284c5d45475841445e495b684f45494144064b4745">✉️ <span class="__cf_email__" data-cfemail="0f6b7a62607f6663796e7c4f68626e6663216c6062">[email&#160;protected]</span></a>
+          <a href="/cdn-cgi/l/email-protection#7e1a0b13110e1712081f0d3e19131f1712501d1113">✉️ <span class="__cf_email__" data-cfemail="3155445c5e41585d47504271565c50585d1f525e5c">[email&#160;protected]</span></a>
         </div>
         <div class="social-links" style="margin-top:20px">
           <a href="#" class="social-link" title="Facebook">f</a>
@@ -2700,16 +2691,7 @@ textarea.form-input { resize: vertical; min-height: 90px; }
       <span class="cart-total-val" id="cartTotal">0,00 €</span>
     </div>
     <div id="deliveryProgress" style="margin:10px 0 14px;"></div>
-    <div id="couponSection" style="margin:8px 0 10px;padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:4px;">
-      <div id="couponActive" style="display:none;align-items:center;justify-content:space-between;">
-        <span id="couponActiveLabel" style="font-size:0.82rem;color:#6adb80;font-weight:700;"></span>
-        <button onclick="removeCoupon()" style="background:none;border:none;color:rgba(240,232,234,0.4);cursor:pointer;">✕</button>
-      </div>
-      <div id="couponInput" style="display:flex;gap:6px;">
-        <input id="couponCode" placeholder="Kupono kodas..." onkeydown="if(event.key==='Enter')applyCouponFromInput()" style="flex:1;font-size:0.82rem;padding:8px 10px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#f0e8ea;font-family:inherit;">
-        <button onclick="applyCouponFromInput()" style="padding:8px 14px;background:#8B1A2E;color:white;border:none;border-radius:3px;font-size:0.78rem;font-weight:700;cursor:pointer;">Taikyti</button>
-      </div>
-    </div>
+    <div id="couponSection" style="margin:8px 0 10px;padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:4px;"><div id="couponActive" style="display:none;align-items:center;justify-content:space-between;"><span id="couponActiveLabel" style="font-size:0.82rem;color:#6adb80;font-weight:700;"></span><button onclick="removeCoupon()" style="background:none;border:none;color:rgba(240,232,234,0.4);cursor:pointer;">✕</button></div><div id="couponInput" style="display:flex;gap:6px;"><input id="couponCode" placeholder="Kupono kodas..." onkeydown="if(event.key==='Enter')applyCouponFromInput()" style="flex:1;font-size:0.82rem;padding:8px 10px;border-radius:3px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:#f0e8ea;font-family:inherit;"><button onclick="applyCouponFromInput()" style="padding:8px 14px;background:#8B1A2E;color:white;border:none;border-radius:3px;font-size:0.78rem;font-weight:700;cursor:pointer;">Taikyti</button></div></div>
     <div id="cartFooterBtns">
       <button class="cart-checkout-btn" onclick="openOrderModal('web')">Pateikti užsakymą →</button>
       <button class="cart-msg-btn" onclick="openOrderModal('message')">💬 Užsakyti per žinutę</button>
@@ -2896,10 +2878,10 @@ const _defaultProducts = [
 
 // Load from localStorage – if saved, use saved; otherwise use defaults
 const _savedProducts = localStorage.getItem('dp_products');
-let products = _savedProducts ? JSON.parse(_savedProducts) : _defaultProducts;
+let products = []; // Always loaded fresh from Google Sheets
 let orders = JSON.parse(localStorage.getItem('dp_orders') || '[]');
 let nextOrderId = orders.length ? Math.max(...orders.map(o=>o.id)) + 1 : 1001;
-let sheetsUrl = localStorage.getItem('dp_sheets_url') || '';
+let sheetsUrl = 'https://script.google.com/macros/s/AKfycbwd7XLV3ojBv-AJRCOBBcVR3cYSbutpbtpFTT6Kz8dNjm9Y1m5cIuwUIr6oIgwHK-sV/exec';
 let uploadedImgsData = [null,null,null]; // base64 from file uploads
 
 function saveAll() {
@@ -3379,14 +3361,8 @@ function submitOrder() {
   // Sync to Google Sheets if configured
   if (sheetsUrl) syncOrderToSheets(order);
 
-  // Send via Apps Script
   if (sheetsUrl) {
-    fetch(sheetsUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain' },
-      body: JSON.stringify({ action: 'addOrder', order: order })
-    }).catch(function(e) { console.warn('Failed:', e); });
+    fetch(sheetsUrl, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body:JSON.stringify({action:'addOrder',order:order}) }).catch(function(){});
   }
 
   document.getElementById('orderModalContent').innerHTML = `
@@ -3898,8 +3874,30 @@ document.querySelectorAll('[data-shop-filter]').forEach(btn => {
 });
 
 // ================== INIT ==================
-renderShop();
-updateCartUI();
+// Always load fresh from Google Sheets
+fetch('https://script.google.com/macros/s/AKfycbwd7XLV3ojBv-AJRCOBBcVR3cYSbutpbtpFTT6Kz8dNjm9Y1m5cIuwUIr6oIgwHK-sV/exec?action=getProducts')
+  .then(function(r){ return r.json(); })
+  .then(function(data){
+    if (!data.ok || !data.products) { renderShop(); updateCartUI(); return; }
+    products = data.products.map(function(row){
+      return {
+        id: parseInt(row['id']),
+        name: row['pavadinimas'] || '',
+        price: parseFloat(row['kaina']) || 0,
+        stock: parseInt(row['likutis']) || 0,
+        cat: row['kategorija'] || 'tools',
+        img: row['nuotrauka'] || '',
+        grupe: row['grupe'] ? String(row['grupe']).trim() : '',
+        desc: row['aprasymas'] || '',
+        badge: row['badge'] || '',
+        tags: []
+      };
+    });
+    localStorage.setItem('dp_products', JSON.stringify(products));
+    renderShop();
+    updateCartUI();
+  })
+  .catch(function(){ renderShop(); updateCartUI(); });
 // Init sheets URL from localStorage
 if (sheetsUrl) {
   const urlInput = document.getElementById('sheets-url');
@@ -4902,161 +4900,88 @@ function closeModalOutside(e) {
   });
 })();
 </script>
-<div id="ckBanner">
-  <span style="color:rgba(240,232,234,0.85);font-size:0.84rem;flex:1;">🍪 Ši svetainė naudoja būtinus slapukus. Duomenys naudojami tik užsakymui. <a href="privacy.html" target="_blank" style="color:#8B1A2E;">Privatumo politika</a></span>
-  <div style="display:flex;gap:10px;">
-    <button onclick="document.getElementById('ckBanner').style.display='none'" style="padding:10px 18px;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(240,232,234,0.7);border-radius:4px;font-family:inherit;font-size:0.82rem;cursor:pointer;">Tik būtini</button>
-    <button onclick="document.getElementById('ckBanner').style.display='none'" style="padding:10px 22px;background:#8B1A2E;color:white;border:none;border-radius:4px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;">✓ Sutinku</button>
-  </div>
-</div>
-<div id="promoBanner" style="position:fixed;bottom:90px;right:20px;z-index:500;background:#1a0808;border:1px solid rgba(139,26,46,0.5);border-left:3px solid #8B1A2E;border-radius:4px;padding:12px 16px;max-width:220px;font-size:0.82rem;">
-  <button onclick="document.getElementById('promoBanner').style.display='none'" style="position:absolute;top:6px;right:8px;background:none;border:none;color:rgba(240,232,234,0.4);cursor:pointer;font-size:0.9rem;">✕</button>
-  <div style="color:#8B1A2E;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;margin-bottom:6px;">PIRMAS UŽSAKYMAS</div>
-  <div style="color:rgba(240,232,234,0.8);margin-bottom:8px;">-15% su kodu:</div>
-  <div onclick="navigator.clipboard.writeText('PIRMAS15').catch(function(){});showToast('Nukopijuota!','🎉')" style="font-family:'Space Mono',monospace;font-size:1rem;font-weight:700;color:#8B1A2E;background:rgba(139,26,46,0.1);border:1px dashed rgba(139,26,46,0.4);border-radius:3px;padding:6px 10px;text-align:center;cursor:pointer;">PIRMAS15</div>
-  <div style="font-size:0.7rem;color:rgba(240,232,234,0.3);margin-top:6px;text-align:center;">Spausk kad nukopijuoti</div>
-</div>
+<div id="ckBanner"><span style="color:rgba(240,232,234,0.85);font-size:0.84rem;flex:1;">🍪 Ši svetainė naudoja būtinus slapukus. Duomenys naudojami tik užsakymui. <a href="privacy.html" target="_blank" style="color:#8B1A2E;">Privatumo politika</a></span><div style="display:flex;gap:10px;"><button onclick="document.getElementById('ckBanner').style.display='none'" style="padding:10px 18px;background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(240,232,234,0.7);border-radius:4px;font-family:inherit;font-size:0.82rem;cursor:pointer;">Tik būtini</button><button onclick="document.getElementById('ckBanner').style.display='none'" style="padding:10px 22px;background:#8B1A2E;color:white;border:none;border-radius:4px;font-family:inherit;font-size:0.82rem;font-weight:700;cursor:pointer;">✓ Sutinku</button></div></div>
+<div id="promoBanner" style="position:fixed;bottom:90px;right:20px;z-index:500;background:#1a0808;border:1px solid rgba(139,26,46,0.5);border-left:3px solid #8B1A2E;border-radius:4px;padding:12px 16px;max-width:220px;font-size:0.82rem;"><button onclick="document.getElementById('promoBanner').style.display='none'" style="position:absolute;top:6px;right:8px;background:none;border:none;color:rgba(240,232,234,0.4);cursor:pointer;font-size:0.9rem;">✕</button><div style="color:#8B1A2E;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;margin-bottom:6px;">PIRMAS UŽSAKYMAS</div><div style="color:rgba(240,232,234,0.8);margin-bottom:8px;">-15% su kodu:</div><div onclick="navigator.clipboard.writeText('PIRMAS15').catch(function(){});showToast('Nukopijuota!','🎉')" style="font-family:Space Mono,monospace;font-size:1rem;font-weight:700;color:#8B1A2E;background:rgba(139,26,46,0.1);border:1px dashed rgba(139,26,46,0.4);border-radius:3px;padding:6px 10px;text-align:center;cursor:pointer;">PIRMAS15</div></div>
 <script>
-// ══ SHEETS URL ══
-let sheetsUrl = localStorage.getItem('dp_sheets_url') || 'https://script.google.com/macros/s/AKfycbwd7XLV3ojBv-AJRCOBBcVR3cYSbutpbtpFTT6Kz8dNjm9Y1m5cIuwUIr6oIgwHK-sV/exec';
-
-// ══ AUTO SYNC FROM SHEETS ══
-(function autoSync() {
-  fetch(sheetsUrl + '?action=getProducts')
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      if (!data.ok || !data.products) { renderShop(); updateCartUI(); return; }
-      var prods = JSON.parse(localStorage.getItem('dp_products') || '[]');
-      data.products.forEach(function(row){
-        var id = parseInt(row['id']);
-        var grupe = row['grupe'] ? String(row['grupe']).trim() : '';
-        var existing = prods.find(function(x){ return x.id===id; });
-        if (existing) {
-          existing.price = parseFloat(row['kaina']) || existing.price;
-          existing.stock = parseInt(row['likutis']) || existing.stock;
-          if (row['nuotrauka']) existing.img = row['nuotrauka'];
-          existing.grupe = grupe;
-          existing.name = row['pavadinimas'] || existing.name;
-        } else {
-          prods.push({ id:id, name:row['pavadinimas']||'', price:parseFloat(row['kaina'])||0, stock:parseInt(row['likutis'])||0, cat:row['kategorija']||'tools', img:row['nuotrauka']||'', grupe:grupe, desc:'', badge:'', tags:[] });
-        }
-      });
-      localStorage.setItem('dp_products', JSON.stringify(prods));
-      products = prods;
-      renderShop();
-      updateCartUI();
-    })
-    .catch(function(){ renderShop(); updateCartUI(); });
-})();
-
-// ══ COUPON ══
 var _activeCoupon = null;
 var _coupons = { 'PIRMAS15': { discount: 0.15, label: '15% nuolaida pirmam užsakymui' } };
-function cartTotalWithDiscount() {
-  var base = cartTotal();
-  return _activeCoupon ? base * (1 - _activeCoupon.discount) : base;
-}
+function cartTotalWithDiscount() { var b=cartTotal(); return _activeCoupon ? b*(1-_activeCoupon.discount) : b; }
 function applyCoupon(code) {
-  var c = _coupons[code.toUpperCase().trim()];
-  if (!c) { showToast('Neteisingas kupono kodas', '❌'); return false; }
-  _activeCoupon = Object.assign({}, c, { code: code.toUpperCase().trim() });
-  showToast('Pritaikyta -' + Math.round(c.discount*100) + '%!', '🎉');
-  updateCartUI(); return true;
+  var c=_coupons[code.toUpperCase().trim()];
+  if(!c){showToast('Neteisingas kodas','❌');return false;}
+  _activeCoupon=Object.assign({},c,{code:code.toUpperCase().trim()});
+  showToast('Pritaikyta -'+Math.round(c.discount*100)+'%!','🎉');
+  updateCartUI();return true;
 }
-function applyCouponFromInput() {
-  var inp = document.getElementById('couponCode');
-  if (!inp || !inp.value.trim()) { showToast('Įveskite kodą', '⚠️'); return; }
-  if (applyCoupon(inp.value)) {
-    var a=document.getElementById('couponActive'), b=document.getElementById('couponInput'), l=document.getElementById('couponActiveLabel');
-    if(a)a.style.display='flex'; if(b)b.style.display='none'; if(l)l.textContent='🎉 '+_activeCoupon.label;
+function applyCouponFromInput(){
+  var inp=document.getElementById('couponCode');
+  if(!inp||!inp.value.trim()){showToast('Įveskite kodą','⚠️');return;}
+  if(applyCoupon(inp.value)){
+    var a=document.getElementById('couponActive'),b=document.getElementById('couponInput'),l=document.getElementById('couponActiveLabel');
+    if(a)a.style.display='flex';if(b)b.style.display='none';if(l)l.textContent='🎉 '+_activeCoupon.label;
   }
 }
-function removeCoupon() {
-  _activeCoupon = null;
+function removeCoupon(){
+  _activeCoupon=null;
   var a=document.getElementById('couponActive'),b=document.getElementById('couponInput'),c=document.getElementById('couponCode');
-  if(a)a.style.display='none'; if(b)b.style.display='flex'; if(c)c.value='';
+  if(a)a.style.display='none';if(b)b.style.display='flex';if(c)c.value='';
   updateCartUI();
 }
 
-// ══ GROUP PRODUCT MODAL ══
-var _groupSelected = null;
-var _groupQty = 1;
-
+var _groupSelected=null, _groupQty=1;
 function openGroupModal(grupe) {
-  var members = products.filter(function(p){ return p.grupe === grupe; });
-  if (!members.length) return;
-  var first = members[0];
-  var groupName = grupe === 'dulkes' ? 'Medžio dulkės' : grupe === 'kaladeles' ? 'Kaladėlės' : grupe === 'drozles' ? 'Drožlės' : first.name.split('–')[0].trim();
-  
-  var variantBtns = members.map(function(p, i) {
-    var rysis = p.name.includes('–') ? p.name.split('–')[1].trim() : p.name;
-    return '<button class="variant-btn' + (i===0?' active':'') + (p.stock<=0?' out':'') + '" onclick="selectVariant('+p.id+',this)">'+rysis+'</button>';
+  var members=products.filter(function(p){return p.grupe===grupe;});
+  if(!members.length)return;
+  var first=members[0];
+  var groupName=grupe==='dulkes'?'Medžio dulkės':grupe==='kaladeles'?'Kaladėlės':grupe==='drozles'?'Drožlės':first.name.split('–')[0].trim();
+  var variantBtns=members.map(function(p,i){
+    var rysis=p.name.includes('–')?p.name.split('–')[1].trim():p.name;
+    return '<button class="variant-btn'+(i===0?' active':'')+(p.stock<=0?' out':'')+'" onclick="selectVariant('+p.id+',this)">'+rysis+'</button>';
   }).join('');
-
-  var imgSrc = first.img ? 'images/' + first.img : '';
-  var imgHtml = imgSrc ? '<img id="groupModalImg" src="'+imgSrc+'" alt="'+groupName+'">' : '<div id="groupModalImg" style="height:200px;background:rgba(255,255,255,0.04);border-radius:6px;margin-bottom:16px;display:flex;align-items:center;justify-content:center;color:rgba(240,232,234,0.2);">📷</div>';
-
-  var html = '<div style="padding:28px;max-width:540px;margin:0 auto;">' +
-    '<button onclick="closeProductModal()" style="background:none;border:none;color:rgba(240,232,234,0.5);cursor:pointer;font-size:0.85rem;margin-bottom:16px;display:flex;align-items:center;gap:6px;">← Grįžti į parduotuvę</button>' +
-    imgHtml +
-    '<h2 style="font-size:1.5rem;font-weight:800;color:#f0e8ea;margin-bottom:16px;">'+groupName+'</h2>' +
-    '<div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;color:rgba(240,232,234,0.35);margin-bottom:8px;">MEDIENOS RŪŠIS</div>' +
-    '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">'+variantBtns+'</div>' +
-    '<div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">' +
-      '<span id="groupModalPrice" style="font-family:Space Mono,monospace;font-size:1.8rem;font-weight:700;color:#8B1A2E;">'+first.price.toFixed(2).replace('.',',')+'&nbsp;€</span>' +
-      '<span id="groupModalStock" style="font-size:0.82rem;color:rgba(240,232,234,0.4);">'+(first.stock>0?'✅ Yra ('+first.stock+' vnt.)':'❌ Išparduota')+'</span>' +
-    '</div>' +
-    '<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">' +
-      '<button onclick="groupQtyChange(-1)" style="width:36px;height:36px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;font-size:1.2rem;border-radius:4px;cursor:pointer;">−</button>' +
-      '<span id="groupQty" style="font-size:1.1rem;font-weight:700;color:#f0e8ea;min-width:32px;text-align:center;">1</span>' +
-      '<button onclick="groupQtyChange(1)" style="width:36px;height:36px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;font-size:1.2rem;border-radius:4px;cursor:pointer;">+</button>' +
-    '</div>' +
-    '<button id="groupAddBtn" onclick="addGroupToCart()" '+(first.stock<=0?'disabled':'')+' style="width:100%;padding:16px;background:#8B1A2E;color:white;border:none;border-radius:4px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;">🛒 Į krepšelį</button>' +
+  var imgSrc=first.img?'images/'+first.img:'';
+  var imgHtml=imgSrc?'<img id="groupModalImg" src="'+imgSrc+'" alt="'+groupName+'" style="width:100%;max-height:280px;object-fit:cover;border-radius:6px;margin-bottom:16px;">':'<div style="height:180px;background:rgba(255,255,255,0.04);border-radius:6px;margin-bottom:16px;display:flex;align-items:center;justify-content:center;color:rgba(240,232,234,0.2);">📷</div>';
+  var html='<div style="padding:28px;max-width:540px;margin:0 auto;">'+
+    '<button onclick="closeProductModal()" style="background:none;border:none;color:rgba(240,232,234,0.5);cursor:pointer;font-size:0.85rem;margin-bottom:16px;">← Grįžti į parduotuvę</button>'+
+    imgHtml+
+    '<h2 style="font-size:1.5rem;font-weight:800;color:#f0e8ea;margin-bottom:16px;">'+groupName+'</h2>'+
+    '<div style="font-size:0.7rem;font-weight:700;letter-spacing:0.1em;color:rgba(240,232,234,0.35);margin-bottom:8px;">MEDIENOS RŪŠIS</div>'+
+    '<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;">'+variantBtns+'</div>'+
+    '<div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">'+
+      '<span id="groupModalPrice" style="font-family:Space Mono,monospace;font-size:1.8rem;font-weight:700;color:#8B1A2E;">'+first.price.toFixed(2).replace('.',',')+'&nbsp;€</span>'+
+      '<span id="groupModalStock" style="font-size:0.82rem;color:rgba(240,232,234,0.4);">'+(first.stock>0?'✅ Yra ('+first.stock+' vnt.)':'❌ Išparduota')+'</span>'+
+    '</div>'+
+    '<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">'+
+      '<button onclick="groupQtyChange(-1)" style="width:36px;height:36px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;font-size:1.2rem;border-radius:4px;cursor:pointer;">−</button>'+
+      '<span id="groupQty" style="font-size:1.1rem;font-weight:700;color:#f0e8ea;min-width:32px;text-align:center;">1</span>'+
+      '<button onclick="groupQtyChange(1)" style="width:36px;height:36px;background:rgba(255,255,255,0.07);border:2px solid rgba(255,255,255,0.15);color:#f0e8ea;font-size:1.2rem;border-radius:4px;cursor:pointer;">+</button>'+
+    '</div>'+
+    '<button id="groupAddBtn" onclick="addGroupToCart()" '+(first.stock<=0?'disabled':'')+' style="width:100%;padding:16px;background:#8B1A2E;color:white;border:none;border-radius:4px;font-family:inherit;font-size:1rem;font-weight:700;cursor:pointer;">🛒 Į krepšelį</button>'+
   '</div>';
-
-  var overlay = document.getElementById('productModalOverlay');
-  var mc = document.getElementById('productModalContent');
-  if (overlay && mc) { mc.innerHTML = html; overlay.classList.add('open'); document.body.style.overflow='hidden'; }
-  _groupSelected = first.id;
-  _groupQty = 1;
+  var overlay=document.getElementById('productModalOverlay');
+  var mc=document.getElementById('productModalContent');
+  if(overlay&&mc){mc.innerHTML=html;overlay.classList.add('open');document.body.style.overflow='hidden';}
+  _groupSelected=first.id; _groupQty=1;
 }
-
-function selectVariant(id, btn) {
-  document.querySelectorAll('.variant-btn').forEach(function(b){ b.classList.remove('active'); });
-  btn.classList.add('active');
-  _groupSelected = id;
-  var p = products.find(function(x){ return x.id===id; });
-  if (!p) return;
-  var img = document.getElementById('groupModalImg');
-  if (img && img.tagName === 'IMG') {
-    img.style.opacity='0';
-    setTimeout(function(){
-      img.src = p.img ? 'images/'+p.img : '';
-      img.style.opacity='1';
-    }, 200);
-  }
-  var pe = document.getElementById('groupModalPrice');
-  var se = document.getElementById('groupModalStock');
-  var ab = document.getElementById('groupAddBtn');
-  if(pe) pe.textContent = p.price.toFixed(2).replace('.',',')+' €';
-  if(se) se.textContent = p.stock>0 ? '✅ Yra ('+p.stock+' vnt.)' : '❌ Išparduota';
-  if(ab) ab.disabled = p.stock<=0;
+function selectVariant(id,btn){
+  document.querySelectorAll('.variant-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active'); _groupSelected=id;
+  var p=products.find(function(x){return x.id===id;});
+  if(!p)return;
+  var img=document.getElementById('groupModalImg');
+  if(img&&img.tagName==='IMG'){img.style.opacity='0';setTimeout(function(){img.src=p.img?'images/'+p.img:'';img.style.opacity='1';},200);}
+  var pe=document.getElementById('groupModalPrice'),se=document.getElementById('groupModalStock'),ab=document.getElementById('groupAddBtn');
+  if(pe)pe.textContent=p.price.toFixed(2).replace('.',',')+' €';
+  if(se)se.textContent=p.stock>0?'✅ Yra ('+p.stock+' vnt.)':'❌ Išparduota';
+  if(ab)ab.disabled=p.stock<=0;
 }
-
-function groupQtyChange(delta) {
-  _groupQty = Math.max(1, (_groupQty||1) + delta);
-  var el = document.getElementById('groupQty');
-  if(el) el.textContent = _groupQty;
-}
-
-function addGroupToCart() {
-  if (!_groupSelected) return;
-  var qty = _groupQty || 1;
-  for (var i=0; i<qty; i++) addToCart(_groupSelected, i<qty-1);
+function groupQtyChange(delta){_groupQty=Math.max(1,(_groupQty||1)+delta);var el=document.getElementById('groupQty');if(el)el.textContent=_groupQty;}
+function addGroupToCart(){
+  if(!_groupSelected)return;
+  var qty=_groupQty||1;
+  for(var i=0;i<qty;i++)addToCart(_groupSelected,i<qty-1);
   closeProductModal();
-  showToast('Pridėta į krepšelį! 🛒', '✅');
-  _groupQty = 1;
-  _groupSelected = null;
+  showToast('Pridėta į krepšelį! 🛒','✅');
+  _groupQty=1;_groupSelected=null;
 }
 </script>
 </body>
